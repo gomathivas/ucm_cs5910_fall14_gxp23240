@@ -396,3 +396,7 @@ Caused by: org.apache.maven.artifact.InvalidRepositoryException: URL missing for
 2014-09-11 21:19:10,504 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2014-09-11 21:19:10,504 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2014-09-11 21:19:10,504 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\dhaks\workspace\java\github\cs_5910_fall_14\ucm_cs5910_fall14_gxp23240\cs5910_fall_14_ecomm\src\test\resources
+2014-09-11 22:08:01,751 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-09-11 22:08:01,751 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-09-11 22:08:01,751 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-09-11 22:08:01,751 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\dhaks\workspace\java\github\cs_5910_fall_14\ucm_cs5910_fall14_gxp23240\cs5910_fall_14_ecomm\src\test\resources
