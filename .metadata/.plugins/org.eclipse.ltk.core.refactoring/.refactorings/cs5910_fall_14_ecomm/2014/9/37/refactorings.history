@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;cs5910_fall_14_ecomm/src/main/resources/edu/ucmo/cs5190&apos; to &apos;cs5910&apos;" description="Rename resource &apos;cs5190&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/edu/ucmo/cs5190" name="cs5910" stamp="1410409227611" updateReferences="true"/>&#x0A;<refactoring comment="Move 1 resources to &apos;java&apos;" description="Move 1 resources to &apos;java&apos;" destination="src/main/java" element1="src/main/resources/edu" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1410410144952" updateReferences="true"/>
-</session>

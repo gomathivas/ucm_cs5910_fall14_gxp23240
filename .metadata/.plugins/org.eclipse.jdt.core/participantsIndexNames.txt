@@ -1,5 +1,0 @@
-INDEX VERSION 1.126
-C:\dhaks\workspace\java\github\cs_5910_fall_14\ucm_cs5910_fall14_gxp23240\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1121769756.index
-\cs5910_fall_14_ecomm\src\main\resources
-C:\dhaks\workspace\java\github\cs_5910_fall_14\ucm_cs5910_fall14_gxp23240\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3192821779.index
-\cs5910_fall_14_ecomm\src\main\resources
