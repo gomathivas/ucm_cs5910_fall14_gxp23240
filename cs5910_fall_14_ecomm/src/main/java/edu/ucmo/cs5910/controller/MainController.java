@@ -15,6 +15,5 @@ public class MainController {
             return "welcome";
  
         }
-        
          
     }
