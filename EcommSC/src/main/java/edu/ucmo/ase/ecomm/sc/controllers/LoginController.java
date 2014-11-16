@@ -37,7 +37,7 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String doWelcome(Model model) {
 		model.addAttribute("loginModel", new LoginModel());
-		return "scwelcome";
+		return "login";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -52,7 +52,7 @@ public class LoginController {
 
 		if (result.hasErrors()) {
 //			model.addAttribute("login", loginModel);
-			returnView = "scwelcome";
+			returnView = "login";
 		} else {
 			headerModel.setUser(loginModel.getUserName());
 			session.setAttribute("sessionHeaderModel", headerModel);

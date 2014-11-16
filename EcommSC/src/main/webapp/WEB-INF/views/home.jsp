@@ -6,8 +6,8 @@
 <%@ page session="false"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<tiles:insertDefinition name="scTemplate">
-	<tiles:putAttribute name="scbody">
+<tiles:insertDefinition name="defaultTemplate">
+	<tiles:putAttribute name="body">
 		<div class="center_content">
       <div class="center_title_bar">Latest Products</div>
       <div class="prod_box">

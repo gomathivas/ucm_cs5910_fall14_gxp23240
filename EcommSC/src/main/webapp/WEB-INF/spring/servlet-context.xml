@@ -19,6 +19,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/images/**" location="/resources/images/" />
+	<!-- <resources mapping="/css/**" location="/resources/css" ></resources> -->
 
 	<!-- Resource Bundle Message -->
 	<beans:bean id="messageSource"
