@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+  
+    <definition name="defaultTemplate" template="/WEB-INF/template/default/template.jsp">
+        <put-attribute name="header" value="/WEB-INF/template/default/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/template/default/menu.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/template/default/footer.jsp" />
+    </definition>
+    
+     <definition name="scTemplate" template="/WEB-INF/template/sc/scTemplate.jsp">
+        <put-attribute name="scheader" value="/WEB-INF/template/sc/scHeader.jsp" />
+        <put-attribute name="scMenuTab" value="/WEB-INF/template/sc/scMenuTab.jsp" />
+        <put-attribute name="scmenu" value="/WEB-INF/template/sc/scMenu.jsp" />
+        <put-attribute name="scRightPanel" value="/WEB-INF/template/sc/scRightPanel.jsp" />
+        <put-attribute name="scfooter" value="/WEB-INF/template/sc/scFooter.jsp" />
+    </definition>
+  
+</tiles-definitions>

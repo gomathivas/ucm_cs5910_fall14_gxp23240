@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2014 8:17:09 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="InvoiceStatusCode" table="INVOICE_STATUS_CODE" schema="ASE_ECOM_SC">
+        <id name="invoiceStatusCode" type="big_decimal">
+            <column name="INVOICE_STATUS_CODE" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="invoiceStatusDescription" type="string">
+            <column name="INVOICE_STATUS_DESCRIPTION" length="20" />
+        </property>
+        <set name="invoices" table="INVOICE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="INVOICE_STATUS_CODE" precision="22" scale="0" />
+            </key>
+            <one-to-many class="Invoice" />
+        </set>
+    </class>
+</hibernate-mapping>

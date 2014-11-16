@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2014 8:17:09 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="Products" table="PRODUCTS" schema="ASE_ECOM_SC">
+        <id name="productId" type="big_decimal">
+            <column name="PRODUCT_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="productTypeCode" type="string">
+            <column name="PRODUCT_TYPE_CODE" length="20" />
+        </property>
+        <property name="productName" type="string">
+            <column name="PRODUCT_NAME" length="20" />
+        </property>
+        <property name="productPrize" type="big_decimal">
+            <column name="PRODUCT_PRIZE" precision="22" scale="0" />
+        </property>
+        <property name="productDescription" type="string">
+            <column name="PRODUCT_DESCRIPTION" length="20" />
+        </property>
+        <property name="productImage" type="clob">
+            <column name="PRODUCT_IMAGE" />
+        </property>
+        <set name="orderItemses" table="ORDER_ITEMS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PRODUCT_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="OrderItems" />
+        </set>
+    </class>
+</hibernate-mapping>

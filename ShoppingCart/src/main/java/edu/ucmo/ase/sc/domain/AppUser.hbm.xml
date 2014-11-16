@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2014 8:17:09 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="AppUser" table="APP_USER" schema="ASE_ECOM_SC">
+        <id name="appUserId" type="big_decimal">
+            <column name="APP_USER_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="gender" type="string">
+            <column name="GENDER" length="20" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="FIRST_NAME" length="20" />
+        </property>
+        <property name="middleName" type="string">
+            <column name="MIDDLE_NAME" length="20" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LAST_NAME" length="20" />
+        </property>
+        <set name="addresses" table="ADDRESS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="APP_USER_ID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="Address" />
+        </set>
+        <set name="orderses" table="ORDERS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="APP_USER_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="Orders" />
+        </set>
+        <set name="appUserRoles" table="APP_USER_ROLE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="APP_USER_ID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="AppUserRole" />
+        </set>
+    </class>
+</hibernate-mapping>

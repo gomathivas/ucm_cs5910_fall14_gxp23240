@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2014 8:17:09 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="Invoice" table="INVOICE" schema="ASE_ECOM_SC">
+        <id name="invoiceNumber" type="big_decimal">
+            <column name="INVOICE_NUMBER" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="invoiceStatusCode" class="InvoiceStatusCode" fetch="select">
+            <column name="INVOICE_STATUS_CODE" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="orders" class="Orders" fetch="select">
+            <column name="ORDER_ID" precision="22" scale="0" />
+        </many-to-one>
+        <property name="invoiceDate" type="date">
+            <column name="INVOICE_DATE" length="7" />
+        </property>
+        <property name="invoiceDetails" type="string">
+            <column name="INVOICE_DETAILS" length="20" />
+        </property>
+        <set name="shipmentses" table="SHIPMENTS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="INVOICE_NUMBER" precision="22" scale="0" />
+            </key>
+            <one-to-many class="Shipments" />
+        </set>
+    </class>
+</hibernate-mapping>

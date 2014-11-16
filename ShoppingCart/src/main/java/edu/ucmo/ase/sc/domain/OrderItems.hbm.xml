@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2014 8:17:09 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="OrderItems" table="ORDER_ITEMS" schema="ASE_ECOM_SC">
+        <id name="orderItemId" type="big_decimal">
+            <column name="ORDER_ITEM_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="orderItemsStatusCode" class="OrderItemsStatusCode" fetch="select">
+            <column name="ORDER_ITEMS_STATUS_CODE" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="products" class="Products" fetch="select">
+            <column name="PRODUCT_ID" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="orders" class="Orders" fetch="select">
+            <column name="ORDER_ID" precision="22" scale="0" />
+        </many-to-one>
+        <property name="orderItemsQuantity" type="big_decimal">
+            <column name="ORDER_ITEMS_QUANTITY" precision="22" scale="0" />
+        </property>
+        <property name="orderItemsPrice" type="big_decimal">
+            <column name="ORDER_ITEMS_PRICE" precision="22" scale="0" />
+        </property>
+        <property name="otherOrderItemDetails" type="string">
+            <column name="OTHER_ORDER_ITEM_DETAILS" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2014 8:17:09 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="AppUserRole" table="APP_USER_ROLE" schema="ASE_ECOM_SC">
+        <id name="appUserRoleId" type="big_decimal">
+            <column name="APP_USER_ROLE_ID" precision="22" scale="0" />
+            <generator class="foreign">
+                <param name="property">appRole</param>
+            </generator>
+        </id>
+        <one-to-one name="appRole" class="AppRole" constrained="true"></one-to-one>
+        <many-to-one name="appUser" class="AppUser" fetch="select">
+            <column name="APP_USER_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

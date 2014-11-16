@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2014 8:17:09 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="Shipments" table="SHIPMENTS" schema="ASE_ECOM_SC">
+        <id name="shipmentId" type="big_decimal">
+            <column name="SHIPMENT_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="invoice" class="Invoice" fetch="select">
+            <column name="INVOICE_NUMBER" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="orders" class="Orders" fetch="select">
+            <column name="ORDER_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="shipmentTrackingNumber" type="string">
+            <column name="SHIPMENT_TRACKING_NUMBER" length="20" />
+        </property>
+        <property name="shipmentDate" type="date">
+            <column name="SHIPMENT_DATE" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

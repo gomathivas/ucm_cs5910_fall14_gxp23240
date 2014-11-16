@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2014 8:17:09 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="Orders" table="ORDERS" schema="ASE_ECOM_SC">
+        <id name="orderId" type="big_decimal">
+            <column name="ORDER_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="orderStatus" class="OrderStatus" fetch="select">
+            <column name="ORDER_STATUS_CODE" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="appUser" class="AppUser" fetch="select">
+            <column name="APP_USER_ID" precision="22" scale="0" />
+        </many-to-one>
+        <property name="orderStatus_1" type="string">
+            <column name="ORDER_STATUS" length="20" />
+        </property>
+        <property name="orderPlacedDate" type="date">
+            <column name="ORDER_PLACED_DATE" length="7" />
+        </property>
+        <property name="orderDetails" type="string">
+            <column name="ORDER_DETAILS" length="20" />
+        </property>
+        <set name="invoices" table="INVOICE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ORDER_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="Invoice" />
+        </set>
+        <set name="orderItemses" table="ORDER_ITEMS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ORDER_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="OrderItems" />
+        </set>
+        <set name="shipmentses" table="SHIPMENTS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ORDER_ID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="Shipments" />
+        </set>
+    </class>
+</hibernate-mapping>

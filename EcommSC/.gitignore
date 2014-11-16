@@ -1,0 +1,8 @@
+/target/
+.settings/*
+/WebContent/*
+backup/*
+build/classes/META-INF/*
+src/main/resources/images/*
+src/main/webapp/resources/images/*
+src/main/webapp/WEB-INF/lib/*.jar
