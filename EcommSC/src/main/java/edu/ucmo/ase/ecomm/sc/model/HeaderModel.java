@@ -1,8 +1,6 @@
 package edu.ucmo.ase.ecomm.sc.model;
 
-import org.springframework.context.annotation.Scope;
 
-@Scope("session")
 public class HeaderModel {
 	
 	private String searchKeyWord;

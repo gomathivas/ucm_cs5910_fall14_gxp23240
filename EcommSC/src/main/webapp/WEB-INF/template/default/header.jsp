@@ -1,3 +1,5 @@
+<%@page import="edu.ucmo.ase.ecomm.sc.model.SessionModel"%>
+<%@page import="edu.ucmo.ase.ecomm.sc.model.HeaderModel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -12,9 +14,19 @@
 		<img class="imgHeaderUCM" src="images/UCM_twolineCE_2color.png" alt=""
 			title="" border="0" />
 		<%
-  			/* String userName = ((edu.ucmo.ase.ecomm.sc.model.HeaderModel)request.getSession().getAttribute("sessionHeaderModel")).getUser();
-
-			out.print("Welcome, " + userName); */
+			HeaderModel headerModel = null;
+			String userName = "";
+		    SessionModel sessionModel = ((edu.ucmo.ase.ecomm.sc.model.SessionModel)request.getSession().getAttribute("sessionModel"));
+  			
+		    if(sessionModel != null){
+		    	headerModel = sessionModel.getHeaderModel();
+		    }
+		    
+		    if(headerModel != null)	{
+		    	userName  = headerModel.getUser();
+		    }
+			
+			out.print("Welcome, " + userName); 
 		%>
 
 

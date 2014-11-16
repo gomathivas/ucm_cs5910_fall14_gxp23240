@@ -10,26 +10,35 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-
+	
 	<context:component-scan base-package="edu.ucmo.ase.ecomm.sc" />
 
+
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/images/**" location="/resources/images/" />
 	<!-- <resources mapping="/css/**" location="/resources/css" ></resources> -->
 
+
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 	<!-- Resource Bundle Message -->
 	<beans:bean id="messageSource"
 	        class="org.springframework.context.support.ResourceBundleMessageSource">
 	        <beans:property name="basename" value="validation" />
 	 </beans:bean>
 
+
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 	<!-- welcome file -->
 	<view-controller path="/" view-name="index" />
 
+
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
@@ -38,6 +47,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 	<!-- Tiles configuration -->
 
 	<beans:bean id="tilesConfigurer"
@@ -48,7 +59,8 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-	    
+	
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 	<!-- Datasource beans -->
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -91,11 +103,34 @@
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 
+
+	<!-- __________________________________________________________________________________________________________________________________________ -->
+	
 	<!-- Session objects -->
+	<beans:bean id="sessionModel" class="edu.ucmo.ase.ecomm.sc.model.SessionModel">
+		<beans:property name="headerModel" ref="sessionHeaderModel"></beans:property>
+	</beans:bean>
+	
 	<beans:bean id="sessionHeaderModel" class="edu.ucmo.ase.ecomm.sc.model.HeaderModel"></beans:bean>
+	
+	
+	<!-- End of Session Objects -->
+	<!-- __________________________________________________________________________________________________________________________________________ -->
+	
+	<!-- Application Context beans -->
+	<beans:bean id="appContext" class="edu.ucmo.ase.ecomm.sc.controllers.ApplicationContext">
+		<beans:property name="loginModel" ref="appLoginModel"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="appLoginModel" class="edu.ucmo.ase.ecomm.sc.model.LoginModel"></beans:bean>
+	
+	
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 	
 	<!-- Validators -->
 	<beans:bean id="loginValidator" class="edu.ucmo.ase.ecomm.sc.validators.LoginValidator" />
 	<beans:bean id="newCustomerValidator" class="edu.ucmo.ase.ecomm.sc.validators.NewCustomerValidator" />
 
+
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 </beans:beans>

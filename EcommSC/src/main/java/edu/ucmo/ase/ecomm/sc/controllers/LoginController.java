@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.ucmo.ase.ecomm.sc.model.HeaderModel;
 import edu.ucmo.ase.ecomm.sc.model.LoginModel;
+import edu.ucmo.ase.ecomm.sc.model.SessionModel;
 
 @Controller
 @RequestMapping("/login")
@@ -26,8 +27,12 @@ public class LoginController {
 	private Validator validator;
 
 	@Autowired
-	@Qualifier("sessionHeaderModel")
-	private HeaderModel headerModel;
+	@Qualifier("appContext")
+	private ApplicationContext appContext;
+	
+	@Autowired
+	@Qualifier("sessionModel")
+	private SessionModel sessionModel;
 	
 	@InitBinder
 	private void initBinder(WebDataBinder binder) {
@@ -35,8 +40,8 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String doWelcome(Model model) {
-		model.addAttribute("loginModel", new LoginModel());
+	public String doLogin(Model model) {
+		model.addAttribute("loginModel", appContext.getLoginModel());
 		return "login";
 	}
 
@@ -51,12 +56,11 @@ public class LoginController {
 		System.out.println("password " + loginModel.getPassword());
 
 		if (result.hasErrors()) {
-//			model.addAttribute("login", loginModel);
 			returnView = "login";
 		} else {
+			HeaderModel headerModel = sessionModel.getHeaderModel();
 			headerModel.setUser(loginModel.getUserName());
-			session.setAttribute("sessionHeaderModel", headerModel);
-//			model.addAttribute("sessionHeaderModel", headerModel);
+			session.setAttribute("sessionModel", sessionModel);
 		}
 		return returnView;
 
