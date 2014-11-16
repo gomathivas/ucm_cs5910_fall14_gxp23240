@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.ucmo.ase.ecomm.sc.model.LoginModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
+import edu.ucmo.ase.ecomm.sc.service.ProductService;
 
 @Controller
 @RequestMapping("/home")
@@ -25,10 +26,18 @@ public class HomeController {
 	@Autowired
 	@Qualifier("sessionModel")
 	private SessionModel sessionModel;
+	
+	@Autowired
+	@Qualifier("productService")
+	private ProductService productService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String doWelcome(Model model) {
 		model.addAttribute("loginModel", appContext.getLoginModel());
+		
+		appContext.setHomeProducts(productService.getProductList());
+		model.addAttribute("productList", appContext.getHomeProducts());
+		
 		return "home";
 	}
 

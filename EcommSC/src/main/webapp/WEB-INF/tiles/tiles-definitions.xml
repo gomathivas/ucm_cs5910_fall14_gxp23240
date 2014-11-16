@@ -5,6 +5,7 @@
 <tiles-definitions>
   
     <definition name="defaultTemplate" template="/WEB-INF/template/default/template.jsp">
+     	<put-attribute name="top-bar" value="/WEB-INF/template/default/topBar.jsp" />
         <put-attribute name="header" value="/WEB-INF/template/default/header.jsp" />
         <put-attribute name="top-menuTab" value="/WEB-INF/template/default/top-menuTab.jsp" />
         <put-attribute name="left-menu" value="/WEB-INF/template/default/left-menu.jsp" />

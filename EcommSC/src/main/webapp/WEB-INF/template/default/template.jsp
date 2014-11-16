@@ -818,6 +818,7 @@ a.contact {
 </head>
 <body>
 		<div class="page">
+		<tiles:insertAttribute name="top-bar" />
 		<tiles:insertAttribute name="header" />
 		<tiles:insertAttribute name="top-menuTab"/>
 		<div class="content">

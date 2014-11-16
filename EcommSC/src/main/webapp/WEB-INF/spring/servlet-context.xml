@@ -123,8 +123,11 @@
 	</beans:bean>
 	
 	<beans:bean id="appLoginModel" class="edu.ucmo.ase.ecomm.sc.model.LoginModel"></beans:bean>
+	<!-- __________________________________________________________________________________________________________________________________________ -->
 	
-	
+	<!-- Services -->
+	<beans:bean id="productService" class="edu.ucmo.ase.ecomm.sc.service.ProductServiceImpl"></beans:bean>
+		
 	<!-- __________________________________________________________________________________________________________________________________________ -->
 	
 	<!-- Validators -->
