@@ -8,7 +8,9 @@
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="body">
 		<div class="body">
-			<h1>Welcome User</h1>
+			<div class="center_content">
+				<h1>Welcome User</h1>
+			</div>
 		</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>

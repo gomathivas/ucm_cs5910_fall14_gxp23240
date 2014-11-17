@@ -58,6 +58,7 @@ public class LoginController {
 		if (result.hasErrors()) {
 			returnView = "login";
 		} else {
+			sessionModel.setUserLoggedIn(true);
 			HeaderModel headerModel = sessionModel.getHeaderModel();
 			headerModel.setUser(loginModel.getUserName());
 			session.setAttribute("sessionModel", sessionModel);

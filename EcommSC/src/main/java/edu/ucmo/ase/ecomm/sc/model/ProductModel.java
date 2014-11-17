@@ -4,7 +4,7 @@ public class ProductModel {
 
 	private Integer productId;
 	private String productShortDes;
-	private String prodectLongDes;
+	private String productLongDes;
 
 	private double newPrice;
 	private double oldPrice;
@@ -32,11 +32,11 @@ public class ProductModel {
 	}
 
 
-	public ProductModel(String productShortDes, String prodectLongDes,
+	public ProductModel(String productShortDes, String productLongDes,
 			double newPrice, double oldPrice) {
 		super();
 		this.productShortDes = productShortDes;
-		this.prodectLongDes = prodectLongDes;
+		this.productLongDes = productLongDes;
 		this.newPrice = newPrice;
 		this.oldPrice = oldPrice;
 	}
@@ -58,12 +58,12 @@ public class ProductModel {
 		this.productShortDes = productShortDes;
 	}
 
-	public String getProdectLongDes() {
-		return prodectLongDes;
+	public String getProductLongDes() {
+		return productLongDes;
 	}
 
-	public void setProdectLongDes(String prodectLongDes) {
-		this.prodectLongDes = prodectLongDes;
+	public void setProductLongDes(String productLongDes) {
+		this.productLongDes = productLongDes;
 	}
 
 	public double getNewPrice() {

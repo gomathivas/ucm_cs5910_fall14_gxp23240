@@ -10,6 +10,9 @@ public class ApplicationContext {
 	private LoginModel loginModel;
 	private List<ProductModel> homeProducts;
 	
+	private String searchKeyWord = "";
+	
+	
 	public LoginModel getLoginModel() {
 		return loginModel;
 	}
@@ -22,5 +25,13 @@ public class ApplicationContext {
 	public void setHomeProducts(List<ProductModel> homeProducts) {
 		this.homeProducts = homeProducts;
 	}
+	public String getSearchKeyWord() {
+		return searchKeyWord;
+	}
+	public void setSearchKeyWord(String searchKeyWord) {
+		this.searchKeyWord = searchKeyWord;
+	}
+
+	
 	
 }

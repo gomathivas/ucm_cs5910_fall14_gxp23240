@@ -6,6 +6,15 @@ import org.springframework.context.annotation.Scope;
 public class SessionModel {
 	
 	private HeaderModel headerModel;
+	private ShoppingCartModel shopppingCartModel;
+	private boolean userLoggedIn = false;
+	private ProductModel selectedProductDetails;
+	private String addToCartRequestPage;
+	
+	/**
+	 * The user input for searching products
+	 */
+	private String searchKeyWord;
 	
 	public HeaderModel getHeaderModel() {
 		return headerModel;
@@ -14,5 +23,53 @@ public class SessionModel {
 	public void setHeaderModel(HeaderModel headerModel) {
 		this.headerModel = headerModel;
 	}
+
+	public ShoppingCartModel getShopppingCartModel() {
+		return shopppingCartModel;
+	}
+
+	public void setShopppingCartModel(ShoppingCartModel shopppingCartModel) {
+		this.shopppingCartModel = shopppingCartModel;
+	}
+
+	public String getSearchKeyWord() {
+		return searchKeyWord;
+	}
+
+	public void setSearchKeyWord(String searchKeyWord) {
+		this.searchKeyWord = searchKeyWord;
+	}
+
+	public ProductModel getSelectedProductDetails() {
+		return selectedProductDetails;
+	}
+
+	public void setSelectedProductDetails(ProductModel selectedProductDetails) {
+		this.selectedProductDetails = selectedProductDetails;
+	}
+	
+	
+	public boolean isUserLoggedIn() {
+		return userLoggedIn;
+	}
+
+	public boolean getUserLoggedIn() {
+		return userLoggedIn;
+	}
+
+	
+	public void setUserLoggedIn(boolean userLoggedIn) {
+		this.userLoggedIn = userLoggedIn;
+	}
+
+	public String getAddToCartRequestPage() {
+		return addToCartRequestPage;
+	}
+
+	public void setAddToCartRequestPage(String addToCartRequestPage) {
+		this.addToCartRequestPage = addToCartRequestPage;
+	}
+	
+
 	
 }
