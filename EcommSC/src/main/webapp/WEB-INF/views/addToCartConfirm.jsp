@@ -50,7 +50,7 @@
 									var="addToConfirmCancelUrl" htmlEscape="true" /> <a
 								href="${addToConfirmCancelUrl}" class="compare" >Cancel</a>
 								
-							<a href="" class="compare">Cancel</a>
+							<!-- <a href="" class="compare">Cancel</a> -->
 					</div>
 				</div>
 				<div class="bottom_prod_box_big"></div>
