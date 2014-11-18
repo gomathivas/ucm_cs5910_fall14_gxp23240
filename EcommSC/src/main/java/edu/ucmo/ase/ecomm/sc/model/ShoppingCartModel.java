@@ -23,10 +23,6 @@ public class ShoppingCartModel {
 		return total;
 	}
 	
-//	public static void setTotal(BigDecimal total) {
-//		ShoppingCartModel.total = total;
-//	}
-	
 	public List<ShoppingCartModel> getScmList() {
 		if(scmList == null)	{
 			scmList = new ArrayList<ShoppingCartModel>();
@@ -59,10 +55,36 @@ public class ShoppingCartModel {
 		return subTotal;
 	}
 
-//	public void setSubTotal(BigDecimal subTotal) {
-//		this.subTotal = subTotal;
-//	}
-
-
+	public void addProductToCart(ProductModel product)	{
+		ShoppingCartModel scm = findSCMwithProduct(product);
+		if(scm == null)	{
+			ShoppingCartModel newSCM = new ShoppingCartModel();
+			newSCM.setProduct(product);
+			newSCM.setCount(1);
+			getScmList().add(newSCM);
+		}
+		else	{
+			scm.incrementCount();
+		}
+	}
 	
+	
+	private void incrementCount() {
+		this.count++;		
+	}
+
+	public ShoppingCartModel findSCMwithProduct (ProductModel product)	{
+		ShoppingCartModel scModel = null;
+		for (ShoppingCartModel scm : getScmList()) {
+			if(scm.getProduct().getProductId().compareTo(product.getProductId()) == 0)	{
+				scModel = scm;
+			}
+		}
+		
+		return scModel;
+	}
+	
+	public Integer getShoppingCartCount()	{
+		return scmList.size();
+	}
 }

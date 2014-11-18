@@ -59,20 +59,19 @@ public class AddToCartController {
 	public String doAddToCartConfirmOk(HttpSession session, Model model,
 			@PathVariable("productId") Integer productId) {
 		
-		SessionModel sessionModel = (SessionModel)session.getAttribute("sessionModel");
+//		SessionModel sessionModel = (SessionModel)session.getAttribute("sessionModel");
 		String redirectPage = sessionModel.getAddToCartRequestPage();
+		
+		System.out.println("redirect page " + redirectPage);
+		
 		ProductModel product = productService.getProductById(productId);
-
 		
-		return "redirect:/addToConfirmOk";
-	}
-
-	@RequestMapping(value = "/addToConfirmOk")
-	public String doAddToCartConfrimOk(HttpSession session, Model model) {
-		String returnView = "addToConfirmOk";
-	
+		ShoppingCartModel scModel = sessionModel.getShoppingCartModel();
 		
-		return returnView;
+		scModel.addProductToCart(product);
+		session.setAttribute("sessionModel", sessionModel);
+		
+		return "redirect:/" + redirectPage;
 	}
 
 }

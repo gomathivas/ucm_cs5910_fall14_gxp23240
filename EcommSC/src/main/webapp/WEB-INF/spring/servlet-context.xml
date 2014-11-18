@@ -109,7 +109,7 @@
 	<!-- Session objects -->
 	<beans:bean id="sessionModel" class="edu.ucmo.ase.ecomm.sc.model.SessionModel">
 		<beans:property name="headerModel" ref="sessionHeaderModel"></beans:property>
-		<beans:property name="shopppingCartModel" ref="sessionShoppingCartModel"></beans:property>
+		<beans:property name="shoppingCartModel" ref="sessionShoppingCartModel"></beans:property>
 	</beans:bean>
 	
 	<beans:bean id="sessionHeaderModel" class="edu.ucmo.ase.ecomm.sc.model.HeaderModel"></beans:bean>

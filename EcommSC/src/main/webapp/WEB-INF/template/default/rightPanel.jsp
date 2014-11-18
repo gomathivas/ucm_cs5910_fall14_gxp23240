@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@page import="edu.ucmo.ase.ecomm.sc.model.SessionModel"%>
 <%@page import="edu.ucmo.ase.ecomm.sc.model.HeaderModel"%>
@@ -14,31 +14,36 @@
 	<div class="shopping_cart">
 		<div class="cart_title">Shopping cart</div>
 		<div class="cart_details">
-		<%
+			<%
 			ShoppingCartModel scModel = null;
 			Integer count = 0;
 			BigDecimal total = BigDecimal.ZERO;
 		    SessionModel sessionModel = ((edu.ucmo.ase.ecomm.sc.model.SessionModel)request.getSession().getAttribute("sessionModel"));
   			
 		    if(sessionModel != null){
-		    	scModel = sessionModel.getShopppingCartModel();
+		    	scModel = sessionModel.getShoppingCartModel();
 		    }
 		    
 		    if(scModel != null)	{
-		    	/* count  = scModel.getSCProductCount();
-		    	total = scModel.getTotal(); */
+		    	count  = scModel.getShoppingCartCount(); 
+		    	total = ShoppingCartModel.getTotal(scModel.getScmList()); 
 		    }
 			
 			out.print(count + " items"); 
 		%>
-		<br /> <span class="border_cart"></span> 
-		Total: <span
-				class="price"><%out.print(total); %> $ </span>
+			<br /> <span class="border_cart"></span> Total: <span class="price">
+				<%out.print(total); %> $
+			</span>
 		</div>
 		<div class="cart_icon">
-			<a href="" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img
+		<!-- 	<a href="" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img
 				src="images/shoppingcart.png" alt="" width="48" height="48"
-				border="0" /></a>
+				border="0" /></a> -->
+
+			<spring:url value="/viewEditCart" var="viewEditCartUrl" htmlEscape="true" />
+			<a href="${viewEditCartUrl}"> <img src="images/shoppingcart.png"
+				alt="" width="48" height="48" border="0" />
+			</a>
 		</div>
 	</div>
 	<div class="title_box">Whats new</div>

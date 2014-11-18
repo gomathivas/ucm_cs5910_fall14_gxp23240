@@ -3,12 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="body">
 		<div class="center_content">
 
+	<c:set var="requestingPage" value="details/${selectedProduct.productId}" scope="session"/>
 			<div class="center_title_bar">${selectedProduct.productShortDes} </div>
 			<div class="prod_box_big">
 				<div class="top_prod_box_big"></div>
@@ -41,8 +42,15 @@
 						<div class="prod_price_big">
 							<span class="reduce">${selectedProduct.oldPrice}$</span> <span class="price">${selectedProduct.newPrice}$</span>
 						</div>
-						<a href=""
-							class="addtocart">add to cart</a> <a
+						<!-- <a href=""
+							class="addtocart">add to cart</a>  -->
+							
+							<spring:url value="/addToCartConfirm/${selectedProduct.productId}"
+								var="addToCartConfirmUrl" htmlEscape="true" /> 
+								<a class="addtocart" href="${addToCartConfirmUrl}" >
+								Add To Cart
+								</a>
+							<a
 							href=""
 							class="compare">compare</a>
 					</div>
