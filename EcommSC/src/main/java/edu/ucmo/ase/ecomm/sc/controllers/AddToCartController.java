@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.ucmo.ase.ecomm.sc.model.ProductModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
+import edu.ucmo.ase.ecomm.sc.model.ShoppingCartModel;
 import edu.ucmo.ase.ecomm.sc.service.ProductService;
 
 @Controller
@@ -51,6 +52,24 @@ public class AddToCartController {
 		String returnView = "addToCartConfirm";
 		model.addAttribute("selectedProduct",
 				sessionModel.getSelectedProductDetails());
+		return returnView;
+	}
+	
+	@RequestMapping(value = "/addToConfirmOk/{productId}")
+	public String doAddToCartConfirmOk(HttpSession session, Model model,
+			@PathVariable("productId") Integer productId) {
+		
+		ProductModel product = productService.getProductById(productId);
+
+		
+		return "redirect:/addToConfirmOk";
+	}
+
+	@RequestMapping(value = "/addToConfirmOk")
+	public String doAddToCartConfrimOk(HttpSession session, Model model) {
+		String returnView = "addToConfirmOk";
+	
+		
 		return returnView;
 	}
 

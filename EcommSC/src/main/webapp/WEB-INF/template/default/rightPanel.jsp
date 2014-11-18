@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="edu.ucmo.ase.ecomm.sc.model.ShoppingCartModel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -16,7 +17,7 @@
 		<%
 			ShoppingCartModel scModel = null;
 			Integer count = 0;
-			Double total = 0d;
+			BigDecimal total = BigDecimal.ZERO;
 		    SessionModel sessionModel = ((edu.ucmo.ase.ecomm.sc.model.SessionModel)request.getSession().getAttribute("sessionModel"));
   			
 		    if(sessionModel != null){
@@ -24,8 +25,8 @@
 		    }
 		    
 		    if(scModel != null)	{
-		    	count  = scModel.getSCProductCount();
-		    	total = scModel.getTotal();
+		    	/* count  = scModel.getSCProductCount();
+		    	total = scModel.getTotal(); */
 		    }
 			
 			out.print(count + " items"); 

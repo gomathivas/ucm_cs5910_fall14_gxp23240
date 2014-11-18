@@ -40,9 +40,9 @@
 							<span class="reduce">${selectedProduct.oldPrice}$</span> <span
 								class="price">${selectedProduct.newPrice}$</span>
 						</div>
-							<spring:url value="/addToConfirmOK/${product.productId}"
-									var="addToConfirmOKUrl" htmlEscape="true" /> <a
-								href="${addToConfirmOKUrl}" class="addtocart" >Add</a>
+							<spring:url value="/addToConfirmOk/${product.productId}"
+									var="addToConfirmOkUrl" htmlEscape="true" /> <a
+								href="${addToConfirmOkUrl}" class="addtocart" >Add</a>
 								
 						<!-- 	<a href="" class="addtocart">Add</a>  -->
 							

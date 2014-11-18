@@ -1,65 +1,68 @@
 package edu.ucmo.ase.ecomm.sc.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCartModel {
 
-	private List<ProductModel> scProduct = new ArrayList<ProductModel>();
-	private double total;
-
-	public List<ProductModel> getScProduct() {
-		return scProduct;
-	}
-
-	public void setScProduct(List<ProductModel> scProduct) {
-		this.scProduct = scProduct;
-	}
-
-	public double getTotal() {
-
-		total = 0d;
-
-		if (scProduct.isEmpty()) {
-			return total;
+	private static  BigDecimal total = BigDecimal.ZERO;
+	
+	private List<ShoppingCartModel> scmList;
+	
+	private ProductModel product;
+	private BigDecimal subTotal = BigDecimal.ZERO;
+	private int count;
+	
+	public static BigDecimal getTotal(List<ShoppingCartModel> scmList) {
+		
+		total = BigDecimal.ZERO;
+		for (ShoppingCartModel scm : scmList) {
+			total = total.add(scm.getSubTotal());
 		}
-
-		for (ProductModel productModel : scProduct) {
-			this.total = total + productModel.getNewPrice();
-		}
-
 		return total;
 	}
-
-	public void setTotal(double total) {
-		this.total = total;
-	}
 	
-	public void addProduct(ProductModel product)	{
-		this.scProduct.add(product);
-	}
+//	public static void setTotal(BigDecimal total) {
+//		ShoppingCartModel.total = total;
+//	}
 	
-	public void removeProduct(ProductModel product)	{
-		
-		if(scProduct.isEmpty())	{
-			
+	public List<ShoppingCartModel> getScmList() {
+		if(scmList == null)	{
+			scmList = new ArrayList<ShoppingCartModel>();
 		}
-		else	{
-			ProductModel tempProduct = null;
-			for (ProductModel productModel : scProduct) {
-				if(product.getProductId() == productModel.getProductId())	{
-					tempProduct = productModel;
-				}
-			}
-			scProduct.remove(tempProduct);
-		}
+		return scmList;
 	}
 	
-	public void clearProducts()	{
-		this.scProduct.clear();
+	public void setScmList(List<ShoppingCartModel> scmList) {
+		this.scmList = scmList;
+	}
+	
+	public ProductModel getProduct() {
+		return product;
+	}
+	
+	public void setProduct(ProductModel product) {
+		this.product = product;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+	
+	public void setCount(int count) {
+		this.count = count;
 	}
 
-	public Integer getSCProductCount()	{
-		return scProduct.size();
+	public BigDecimal getSubTotal() {
+		subTotal = this.product.getNewPrice().multiply(new BigDecimal(this.count));
+		return subTotal;
 	}
+
+//	public void setSubTotal(BigDecimal subTotal) {
+//		this.subTotal = subTotal;
+//	}
+
+
+	
 }

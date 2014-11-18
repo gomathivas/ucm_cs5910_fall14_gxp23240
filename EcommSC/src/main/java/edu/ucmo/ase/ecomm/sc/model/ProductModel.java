@@ -1,20 +1,22 @@
 package edu.ucmo.ase.ecomm.sc.model;
 
+import java.math.BigDecimal;
+
 public class ProductModel {
 
 	private Integer productId;
 	private String productShortDes;
 	private String productLongDes;
 
-	private double newPrice;
-	private double oldPrice;
+	private BigDecimal newPrice;
+	private BigDecimal oldPrice;
 
 	public ProductModel() {
 		super();
 	}
 	
 	public ProductModel(Integer productId, String productShortDes,
-			double newPrice, double oldPrice) {
+			BigDecimal newPrice, BigDecimal oldPrice) {
 		super();
 		this.productId = productId;
 		this.productShortDes = productShortDes;
@@ -24,7 +26,7 @@ public class ProductModel {
 
 
 
-	public ProductModel(String productShortDes, double newPrice, double oldPrice) {
+	public ProductModel(String productShortDes, BigDecimal newPrice, BigDecimal oldPrice) {
 		super();
 		this.productShortDes = productShortDes;
 		this.newPrice = newPrice;
@@ -33,7 +35,7 @@ public class ProductModel {
 
 
 	public ProductModel(String productShortDes, String productLongDes,
-			double newPrice, double oldPrice) {
+			BigDecimal newPrice, BigDecimal oldPrice) {
 		super();
 		this.productShortDes = productShortDes;
 		this.productLongDes = productLongDes;
@@ -42,6 +44,14 @@ public class ProductModel {
 	}
 
 	
+	public ProductModel(Integer id, String shDec, double newPrice, double oldPrice) {
+		super();
+		this.productId = id;
+		this.productShortDes = shDec;
+		this.newPrice = new BigDecimal(newPrice);
+		this.oldPrice = new BigDecimal(oldPrice);
+	}
+
 	public Integer getProductId() {
 		return productId;
 	}
@@ -66,19 +76,19 @@ public class ProductModel {
 		this.productLongDes = productLongDes;
 	}
 
-	public double getNewPrice() {
+	public BigDecimal getNewPrice() {
 		return newPrice;
 	}
 
-	public void setNewPrice(double newPrice) {
+	public void setNewPrice(BigDecimal newPrice) {
 		this.newPrice = newPrice;
 	}
 
-	public double getOldPrice() {
+	public BigDecimal getOldPrice() {
 		return oldPrice;
 	}
 
-	public void setOldPrice(double oldPrice) {
+	public void setOldPrice(BigDecimal oldPrice) {
 		this.oldPrice = oldPrice;
 	}
 
