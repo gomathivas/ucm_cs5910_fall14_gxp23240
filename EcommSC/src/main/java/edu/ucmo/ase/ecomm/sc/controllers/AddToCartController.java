@@ -59,6 +59,8 @@ public class AddToCartController {
 	public String doAddToCartConfirmOk(HttpSession session, Model model,
 			@PathVariable("productId") Integer productId) {
 		
+		SessionModel sessionModel = (SessionModel)session.getAttribute("sessionModel");
+		String redirectPage = sessionModel.getAddToCartRequestPage();
 		ProductModel product = productService.getProductById(productId);
 
 		
