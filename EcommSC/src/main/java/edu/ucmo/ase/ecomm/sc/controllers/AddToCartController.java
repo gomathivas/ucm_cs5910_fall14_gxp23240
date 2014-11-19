@@ -1,20 +1,17 @@
 package edu.ucmo.ase.ecomm.sc.controllers;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.ucmo.ase.ecomm.sc.model.ProductModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
-import edu.ucmo.ase.ecomm.sc.model.ShoppingCartModel;
+import edu.ucmo.ase.ecomm.sc.model.ShoppingCartListModel;
 import edu.ucmo.ase.ecomm.sc.service.ProductService;
 
 @Controller
@@ -66,7 +63,7 @@ public class AddToCartController {
 		
 		ProductModel product = productService.getProductById(productId);
 		
-		ShoppingCartModel scModel = sessionModel.getShoppingCartModel();
+		ShoppingCartListModel scModel = sessionModel.getShoppingCartListModel();
 		
 		scModel.addProductToCart(product);
 		session.setAttribute("sessionModel", sessionModel);

@@ -1,5 +1,6 @@
 <%@page import="java.math.BigDecimal"%>
 <%@page import="edu.ucmo.ase.ecomm.sc.model.ShoppingCartModel"%>
+<%@page import="edu.ucmo.ase.ecomm.sc.model.ShoppingCartListModel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -15,18 +16,18 @@
 		<div class="cart_title">Shopping cart</div>
 		<div class="cart_details">
 			<%
-			ShoppingCartModel scModel = null;
+			ShoppingCartListModel scListModel = null;
 			Integer count = 0;
 			BigDecimal total = BigDecimal.ZERO;
 		    SessionModel sessionModel = ((edu.ucmo.ase.ecomm.sc.model.SessionModel)request.getSession().getAttribute("sessionModel"));
   			
 		    if(sessionModel != null){
-		    	scModel = sessionModel.getShoppingCartModel();
+		    	scListModel = sessionModel.getShoppingCartListModel();
 		    }
 		    
-		    if(scModel != null)	{
-		    	count  = scModel.getShoppingCartCount(); 
-		    	total = ShoppingCartModel.getTotal(scModel.getScmList()); 
+		    if(scListModel != null)	{
+		    	count  = scListModel.getTotalQuantity(); 
+		    	total = ShoppingCartListModel.getTotal(scListModel.getScmList()); 
 		    }
 			
 			out.print(count + " items"); 

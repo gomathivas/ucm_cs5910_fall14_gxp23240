@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Scope;
 public class SessionModel {
 	
 	private HeaderModel headerModel;
-	private ShoppingCartModel shoppingCartModel;
+	private ShoppingCartListModel shoppingCartListModel;
 	private boolean userLoggedIn = false;
 	private ProductModel selectedProductDetails;
 	private String addToCartRequestPage;
@@ -24,12 +24,12 @@ public class SessionModel {
 		this.headerModel = headerModel;
 	}
 
-	public ShoppingCartModel getShoppingCartModel() {
-		return shoppingCartModel;
+	public ShoppingCartListModel getShoppingCartListModel() {
+		return shoppingCartListModel;
 	}
 
-	public void setShoppingCartModel(ShoppingCartModel shopppingCartModel) {
-		this.shoppingCartModel = shopppingCartModel;
+	public void setShoppingCartListModel(ShoppingCartListModel shoppingCartListModel) {
+		this.shoppingCartListModel = shoppingCartListModel;
 	}
 
 	public String getSearchKeyWord() {

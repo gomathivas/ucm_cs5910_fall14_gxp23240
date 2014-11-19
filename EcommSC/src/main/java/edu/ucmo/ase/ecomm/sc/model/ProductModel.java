@@ -2,6 +2,10 @@ package edu.ucmo.ase.ecomm.sc.model;
 
 import java.math.BigDecimal;
 
+/**
+ * @author dgunasek
+ *
+ */
 public class ProductModel {
 
 	private Integer productId;
@@ -92,5 +96,17 @@ public class ProductModel {
 		this.oldPrice = oldPrice;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ProductModel [productId=").append(productId)
+				.append(", productShortDes=").append(productShortDes)
+				.append(", productLongDes=").append(productLongDes)
+				.append(", newPrice=").append(newPrice).append(", oldPrice=")
+				.append(oldPrice).append("]");
+		return builder.toString();
+	}
+
+	
 	
 }
