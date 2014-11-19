@@ -26,7 +26,7 @@
 		    }
 		    
 		    if(scListModel != null)	{
-		    	count  = scListModel.getTotalQuantity(); 
+		    	count  = scListModel.getTotalQuantity();
 		    	total = ShoppingCartListModel.getTotal(scListModel.getScmList()); 
 		    }
 			

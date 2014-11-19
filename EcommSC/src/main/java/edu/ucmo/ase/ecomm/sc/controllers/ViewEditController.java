@@ -32,7 +32,7 @@ public class ViewEditController {
 	@RequestMapping(value = "/viewEditCart", method = RequestMethod.GET)
 	public String doViewEditCart(Model model) {
 		
-		String returnView = "/viewEditCart";
+		String returnView = "viewEditCart";
 		ShoppingCartListModel scListModel = this.sessionModel.getShoppingCartListModel();
 		model.addAttribute("sclistModel", scListModel);
 		model.addAttribute("scListTotal", ShoppingCartListModel.getTotal(scListModel.getScmList()));

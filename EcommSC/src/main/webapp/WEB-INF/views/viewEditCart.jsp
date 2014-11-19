@@ -38,8 +38,9 @@
 								<td>
 									<%-- <form:label path="scList[${status.index}].count">
 										<spring:message text="count" />
-									</form:label>  --%> <input name="scmList[${status.index}].quantity"
-									value="${scmodel.quantity}" /> <%-- <a href="<c:url value='/edit/${person.id}' />">Edit</a> --%>
+									</form:label>  --%> 
+									<input name="scmList[${status.index}].quantity"
+									value="${scmodel.quantity}" style="width: 90px;" /> <%-- <a href="<c:url value='/edit/${person.id}' />">Edit</a> --%>
 								</td>
 								<td> ${scmodel.subTotal}$
 							<%-- 	<input name="scList[${status.index}].subTotal"
@@ -59,6 +60,8 @@
 						</tr>
 					</table>
 					<input type="submit" value="<spring:message text="Update Cart"/>" />
+					
+					<input type="button"  onclick="location.href='/EcommSC/checkOut'" value="Confirm Check Out" >
 				</form:form>
 
 
