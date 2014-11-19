@@ -136,6 +136,7 @@
 	<!-- Validators -->
 	<beans:bean id="loginValidator" class="edu.ucmo.ase.ecomm.sc.validators.LoginValidator" />
 	<beans:bean id="newCustomerValidator" class="edu.ucmo.ase.ecomm.sc.validators.NewCustomerValidator" />
+	<beans:bean id="paymentValidator" class="edu.ucmo.ase.ecomm.sc.validators.PaymentValidator" />
 
 
 	<!-- __________________________________________________________________________________________________________________________________________ -->

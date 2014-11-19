@@ -6,7 +6,7 @@ import java.util.List;
 public class PaymentModel {
 
 	private List<String> cardTypeOptions;
-	private String cartType;
+	private String cardType;
 	private String cardNumber;
 	private String expireMonth;
 	private List<String> expireMonthOption;
@@ -36,12 +36,12 @@ public class PaymentModel {
 		this.cardTypeOptions = cardTypeOptions;
 	}
 
-	public String getCartType() {
-		return cartType;
+	public String getCardType() {
+		return cardType;
 	}
 
-	public void setCartType(String cartType) {
-		this.cartType = cartType;
+	public void setCardType(String cardType) {
+		this.cardType = cardType;
 	}
 
 	public String getCardNumber() {
