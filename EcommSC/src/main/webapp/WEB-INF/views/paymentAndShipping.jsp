@@ -13,8 +13,86 @@
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="body">
 		<div class="center_content">
-			<h3>Payment and Shipping </h3>
-		
+			<div class="registerNewCustomerForm">
+				<h3>Payment And Shipping</h3>
+				<h3>Payment Method</h3>
+				<c:url var="paymentConfirmation" value="/paymentConfirmation"></c:url>
+
+				<form:form action="${paymentConfirmation}" commandName="paymentModel">
+					<table>
+						<tr>
+							<td><form:label path="firstName">
+									<spring:message text="First Name" />
+								</form:label></td>
+							<td><form:input path="firstName"
+									placeholder="Enter a First name here" /></td>
+							<td><form:errors path="firstName" cssStyle="color: #ff0000;" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="middleName"></form:label> <spring:message
+									text="Middle Name" /></td>
+							<td><form:input path="middleName" /></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><form:label path="lastName">
+									<spring:message text="Last Name" />
+								</form:label></td>
+							<td><form:input path="lastName" /></td>
+							<td><form:errors path="lastName" cssStyle="color: #ff0000;" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="gender">
+									<spring:message text="Gender" />
+								</form:label></td>
+							<td><form:input path="gender" /></td>
+							<td><form:errors path="gender" cssStyle="color: #ff0000;" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="email">
+									<spring:message text="Email" />
+								</form:label></td>
+							<td><form:input path="email" /></td>
+							<td><form:errors path="email" cssStyle="color: #ff0000;" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="password">
+									<spring:message text="Password" />
+								</form:label></td>
+							<td><form:input path="password" /></td>
+							<td><form:errors path="password" cssStyle="color: #ff0000;" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="confirmPassword">
+									<spring:message text="Re-Type Password" />
+								</form:label></td>
+							<td><form:input path="confirmPassword" /></td>
+							<td><form:errors path="confirmPassword"
+									cssStyle="color: #ff0000;" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="address.addressLineOne">
+									<spring:message text="Address Line One" />
+								</form:label></td>
+							<td><form:input path="address.addressLineOne" /></td>
+							<td><form:errors path="address.addressLineOne"
+									cssStyle="color: #ff0000;" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="address.addressLineTwo">
+									<spring:message text="Address Line Two" />
+								</form:label></td>
+							<td><form:input path="address.addressLineTwo" /></td>
+							<td><form:errors path="address.addressLineTwo"
+									cssStyle="color: #ff0000;" /></td>
+						</tr>
+						<tr>
+							<td colspan="3"><input type="submit"
+								value="<spring:message text="Submit"/>" /></td>
+						</tr>
+					</table>
+				</form:form>
+			</div>
 		</div>
 
 	</tiles:putAttribute>

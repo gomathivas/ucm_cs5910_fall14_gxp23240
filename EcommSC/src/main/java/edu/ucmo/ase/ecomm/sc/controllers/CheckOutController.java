@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.ucmo.ase.ecomm.sc.model.PaymentModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
 import edu.ucmo.ase.ecomm.sc.service.ProductService;
 
@@ -32,14 +33,17 @@ public class CheckOutController {
 	
 	@RequestMapping(value = CHECK_OUT, method = RequestMethod.GET)
 	public String doCheckOut(Model model) {
-		
-		String returnView = PAYMENT_AND_SHIPPING;
-		
+				
 		if( ! this.sessionModel.isUserLoggedIn())	{
+			this.sessionModel.setCheckOutAfterLogIn(true);
 			return REDIRECT + LOG_IN;
 		}
+		
+		else	{
+			model.addAttribute("paymentModel", this.sessionModel.getPaymentModel());
+		}
 	
-		return returnView;
+		return PAYMENT_AND_SHIPPING;
 	}
 	
 }

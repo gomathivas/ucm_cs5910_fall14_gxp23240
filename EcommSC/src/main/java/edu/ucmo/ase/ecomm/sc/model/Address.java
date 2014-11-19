@@ -9,6 +9,7 @@ public class Address {
 	private String state;
 	private String country;
 	private String zipCode;
+	
 	public String getAddressLineOne() {
 		return addressLineOne;
 	}

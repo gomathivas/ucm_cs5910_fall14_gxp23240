@@ -10,6 +10,8 @@ public class SessionModel {
 	private boolean userLoggedIn = false;
 	private ProductModel selectedProductDetails;
 	private String addToCartRequestPage;
+	private boolean checkOutAfterLogIn;
+	private PaymentModel paymentModel;
 	
 	/**
 	 * The user input for searching products
@@ -68,6 +70,22 @@ public class SessionModel {
 
 	public void setAddToCartRequestPage(String addToCartRequestPage) {
 		this.addToCartRequestPage = addToCartRequestPage;
+	}
+
+	public boolean isCheckOutAfterLogIn() {
+		return checkOutAfterLogIn;
+	}
+
+	public void setCheckOutAfterLogIn(boolean checkOutAfterLogIn) {
+		this.checkOutAfterLogIn = checkOutAfterLogIn;
+	}
+
+	public PaymentModel getPaymentModel() {
+		return paymentModel;
+	}
+
+	public void setPaymentModel(PaymentModel paymentModel) {
+		this.paymentModel = paymentModel;
 	}
 	
 

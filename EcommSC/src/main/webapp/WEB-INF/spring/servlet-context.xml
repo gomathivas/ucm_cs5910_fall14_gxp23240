@@ -109,11 +109,13 @@
 	<!-- Session objects -->
 	<beans:bean id="sessionModel" class="edu.ucmo.ase.ecomm.sc.model.SessionModel">
 		<beans:property name="headerModel" ref="sessionHeaderModel"></beans:property>
-		<beans:property name="shoppingCartListModel" ref="sessionShoppingCartModel"></beans:property>
+		<beans:property name="shoppingCartListModel" ref="sessionShoppingCartListModel"></beans:property>
+		<beans:property name="paymentModel" ref="sessionPaymentModel"></beans:property>
 	</beans:bean>
 	
 	<beans:bean id="sessionHeaderModel" class="edu.ucmo.ase.ecomm.sc.model.HeaderModel"></beans:bean>
-	<beans:bean id="sessionShoppingCartModel" class="edu.ucmo.ase.ecomm.sc.model.ShoppingCartListModel"></beans:bean>
+	<beans:bean id="sessionShoppingCartListModel" class="edu.ucmo.ase.ecomm.sc.model.ShoppingCartListModel"></beans:bean>
+	<beans:bean id="sessionPaymentModel" class="edu.ucmo.ase.ecomm.sc.model.PaymentModel"></beans:bean>
 	
 	<!-- End of Session Objects -->
 	<!-- __________________________________________________________________________________________________________________________________________ -->

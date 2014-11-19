@@ -22,6 +22,13 @@ import edu.ucmo.ase.ecomm.sc.model.SessionModel;
 @RequestMapping("/login")
 public class LoginController {
 
+	private static final String REDIRECT = "redirect:/";
+	private static final String LOGIN = "login";
+	private static final String WELCOME_USER = "welcomeUser";
+	private static final String HOME = "home";
+	private static final String PAYMENT_SHIPPING = "paymentAndShipping";
+	private static final String CHECK_OUT = "/checkOut";
+
 	@Autowired
 	@Qualifier("loginValidator")
 	private Validator validator;
@@ -42,7 +49,7 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String doLogin(Model model) {
 		model.addAttribute("loginModel", appContext.getLoginModel());
-		return "login";
+		return LOGIN;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -50,20 +57,24 @@ public class LoginController {
 			HttpSession session, Model model, @Validated LoginModel loginModel,
 			BindingResult result) {
 
-		String returnView = "welcomeUser";
-
 		System.out.println("login name " + loginModel.getUserName());
 		System.out.println("password " + loginModel.getPassword());
 
 		if (result.hasErrors()) {
-			returnView = "login";
+			return LOGIN;
 		} else {
 			sessionModel.setUserLoggedIn(true);
 			HeaderModel headerModel = sessionModel.getHeaderModel();
 			headerModel.setUser(loginModel.getUserName());
 			session.setAttribute("sessionModel", sessionModel);
 		}
-		return returnView;
+		
+		if( this.sessionModel.isCheckOutAfterLogIn())	{
+			this.sessionModel.setCheckOutAfterLogIn(false);
+			return REDIRECT + CHECK_OUT;
+		}
+		
+		return REDIRECT + HOME;
 
 	}
 
