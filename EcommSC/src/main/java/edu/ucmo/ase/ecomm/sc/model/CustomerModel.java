@@ -7,6 +7,7 @@ public class CustomerModel {
 	private String middleName;
 	private String gender;
 	private String email;
+	private String phNo;
 	private String password;
 	private String confirmPassword;
 	
@@ -75,6 +76,14 @@ public class CustomerModel {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public String getPhNo() {
+		return phNo;
+	}
+
+	public void setPhNo(String phNo) {
+		this.phNo = phNo;
 	}
 	
 	

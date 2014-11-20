@@ -2,8 +2,12 @@ package edu.ucmo.ase.ecomm.sc.model;
 
 import org.springframework.context.annotation.Scope;
 
+import edu.ucmo.ase.ecomm.sc.domain.AppRoleEnum;
+
 @Scope("session")
 public class SessionModel {
+	
+	private AppRoleEnum appRole;
 	
 	private HeaderModel headerModel;
 	private ShoppingCartListModel shoppingCartListModel;
@@ -86,6 +90,14 @@ public class SessionModel {
 
 	public void setPaymentModel(PaymentModel paymentModel) {
 		this.paymentModel = paymentModel;
+	}
+
+	public AppRoleEnum getAppRole() {
+		return appRole;
+	}
+
+	public void setAppRole(AppRoleEnum appRole) {
+		this.appRole = appRole;
 	}
 	
 
