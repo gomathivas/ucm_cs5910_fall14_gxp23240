@@ -34,6 +34,8 @@ public class ViewEditCartController {
 	@Qualifier("shoppingCartService")
 	private ShoppingCartService scService;
 	
+	
+	
 	@RequestMapping(value = "/viewEditCart", method = RequestMethod.GET)
 	public String doViewEditCart(Model model) {
 		

@@ -5,15 +5,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.validation.Validator;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.WebDataBinder;
 
 import edu.ucmo.ase.ecomm.sc.model.PaymentModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
+import edu.ucmo.ase.ecomm.sc.service.PaymentService;
 import edu.ucmo.ase.ecomm.sc.service.ProductService;
 
 @Controller
@@ -37,6 +38,10 @@ public class CheckOutController {
 	@Autowired
 	@Qualifier("productService")
 	private ProductService productService;
+	
+	@Autowired
+	@Qualifier("paymentService")
+	private PaymentService paymentService;
 
 	@Autowired
 	@Qualifier("paymentValidator")
