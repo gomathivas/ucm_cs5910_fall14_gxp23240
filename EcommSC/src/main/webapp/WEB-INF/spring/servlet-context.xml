@@ -79,6 +79,8 @@
 			<beans:list>
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.AppUser</beans:value>
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.AppRole</beans:value>
+				<beans:value>edu.ucmo.ase.ecomm.sc.domain.Address</beans:value>
+				<beans:value>edu.ucmo.ase.ecomm.sc.domain.AddressType</beans:value>
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.Person</beans:value>
 			</beans:list>
 		</beans:property>

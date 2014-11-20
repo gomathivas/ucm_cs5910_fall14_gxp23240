@@ -57,12 +57,12 @@ public class ShoppingCartListModel {
 	}
 	
 	public Integer getShoppingCartCount()	{
-		return scmList.size();
+		return getScmList().size();
 	}
 
 	public int getTotalQuantity() {
 		totalQuantity = 0;
-		for (ShoppingCartModel shoppingCartModel : scmList) {
+		for (ShoppingCartModel shoppingCartModel : getScmList()) {
 			totalQuantity = totalQuantity + shoppingCartModel.getQuantity();
 		}
 		return totalQuantity;

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -53,6 +54,10 @@ public class AppUser {
 	@JoinTable(name = "APP_USER_ROLE", joinColumns = { @JoinColumn(name = "APP_USER_ID") }, 
 						inverseJoinColumns = { @JoinColumn(name = "APP_ROLE_ID") })
 	private Set<AppRole> appRoles = new HashSet<AppRole>();
+	
+	
+	@OneToMany(mappedBy="appUser")
+	private Set<Address> addresses = new HashSet<Address>();
 
 	public String getPassword() {
 		return password;
@@ -117,7 +122,16 @@ public class AppUser {
 	public void setAppRoles(Set<AppRole> appRoles) {
 		this.appRoles = appRoles;
 	}
+	
+	public Set<Address> getAddresses() {
+		return addresses;
+	}
 
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -127,7 +141,7 @@ public class AppUser {
 				.append(", lastName=").append(lastName).append(", gender=")
 				.append(gender).append(", userName=").append(userName)
 				.append(", password=").append(password).append(", appRoles=")
-				.append(appRoles).append("]");
+				.append("]");
 		return builder.toString();
 	}
 

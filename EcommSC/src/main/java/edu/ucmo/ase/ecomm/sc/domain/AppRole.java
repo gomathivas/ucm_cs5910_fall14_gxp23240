@@ -130,7 +130,7 @@ public class AppRole {
 				.append(", createdDate=").append(createdDate)
 				.append(", modifiedBy=").append(modifiedBy)
 				.append(", modifiedDate=").append(modifiedDate)
-				.append(", appUsers=").append(appUsers).append("]");
+				.append(", appUsers=").append("]");
 		return builder.toString();
 	}
 	

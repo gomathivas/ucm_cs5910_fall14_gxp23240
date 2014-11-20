@@ -3,10 +3,14 @@ package edu.ucmo.ase.ecomm.sc.service;
 import java.util.List;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.ucmo.ase.ecomm.sc.dao.AppUserDAO;
+import edu.ucmo.ase.ecomm.sc.dao.PersonDAOImpl;
+import edu.ucmo.ase.ecomm.sc.domain.Address;
 import edu.ucmo.ase.ecomm.sc.domain.AppRole;
 import edu.ucmo.ase.ecomm.sc.domain.AppRoleEnum;
 import edu.ucmo.ase.ecomm.sc.domain.AppUser;
@@ -17,6 +21,8 @@ import edu.ucmo.ase.ecomm.sc.model.SessionModel;
 @Service
 public class AppUserServiceImpl implements AppUserService {
 
+	private static final Logger logger = LoggerFactory.getLogger(AppUserServiceImpl.class);
+	
 	private AppUserDAO appUserDAO;
 
 	public AppUserDAO getAppUserDAO() {
@@ -78,7 +84,9 @@ public class AppUserServiceImpl implements AppUserService {
 		if (appUser == null) {
 			return false;
 		}
-
+		
+		logAppUser(appUser);
+		
 		Set<AppRole> appRoles = appUser.getAppRoles();
 
 		if (appRoles.size() == 1) {
@@ -99,4 +107,73 @@ public class AppUserServiceImpl implements AppUserService {
 		return false;
 	}
 
+	private void logAppUser(AppUser appUser) {
+		
+		if(appUser == null)	{
+			logger.info("appUser is null");
+			return;
+		}
+		
+		Set<AppRole> appRoles = appUser.getAppRoles();
+		
+		if(appRoles == null)	{
+			logger.info("App Role is null");
+		}
+		
+		else {
+			for (AppRole appRole : appRoles) {
+				logger.info("app role " + appRole);
+			}
+		}
+		
+		Set<Address> addresses = appUser.getAddresses();
+		
+		if(addresses == null)	{
+			logger.info("addresses are null");
+			
+		}
+		else {
+			for (Address address : addresses) {
+				logger.info("address" + address);
+				
+				if(address.getAddressType() == null)	{
+					logger.info("addresstype is null");
+				}
+				else	{
+					logger.info("address type " + address.getAddressType());
+				}
+			}
+		}
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
