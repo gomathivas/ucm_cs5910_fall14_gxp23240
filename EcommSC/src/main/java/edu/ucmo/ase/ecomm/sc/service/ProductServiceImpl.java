@@ -3,9 +3,16 @@ package edu.ucmo.ase.ecomm.sc.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import edu.ucmo.ase.ecomm.sc.dao.ProductDAO;
 import edu.ucmo.ase.ecomm.sc.model.ProductModel;
 
+@Service
 public class ProductServiceImpl implements ProductService {
+	
+	private ProductDAO productDAO;
 
 	@Override
 	public List<ProductModel> getProductList() {
@@ -13,6 +20,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@Transactional
 	public ProductModel getProductById(Integer productId) {
 		return hcFindProductById(productId);
 	}
@@ -43,6 +51,42 @@ public class ProductServiceImpl implements ProductService {
 			}
 		}
 		return selectedProduct;
+	}
+
+	@Override
+	@Transactional
+	public void addProduct(ProductModel product) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	@Transactional
+	public void updateProduct(ProductModel product) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ProductDAO getProductDAO() {
+		return productDAO;
+	}
+
+	public void setProductDAO(ProductDAO productDAO) {
+		this.productDAO = productDAO;
+	}
+
+	@Override
+	@Transactional
+	public List<ProductModel> getAllProductListByCategory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public List<ProductModel> getProductListByCategoryName(String categoryName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

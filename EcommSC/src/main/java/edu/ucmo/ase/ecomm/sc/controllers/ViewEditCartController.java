@@ -12,10 +12,11 @@ import edu.ucmo.ase.ecomm.sc.model.SessionModel;
 import edu.ucmo.ase.ecomm.sc.model.ShoppingCartListModel;
 import edu.ucmo.ase.ecomm.sc.model.ShoppingCartModel;
 import edu.ucmo.ase.ecomm.sc.service.ProductService;
+import edu.ucmo.ase.ecomm.sc.service.ShoppingCartService;
 
 
 @Controller
-public class ViewEditController {
+public class ViewEditCartController {
 	
 	@Autowired
 	@Qualifier("appContext")
@@ -28,6 +29,10 @@ public class ViewEditController {
 	@Autowired
 	@Qualifier("productService")
 	private ProductService productService;
+	
+	@Autowired
+	@Qualifier("shoppingCartService")
+	private ShoppingCartService scService;
 	
 	@RequestMapping(value = "/viewEditCart", method = RequestMethod.GET)
 	public String doViewEditCart(Model model) {

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.ucmo.ase.ecomm.sc.dao.AppUserDAO;
-import edu.ucmo.ase.ecomm.sc.dao.PersonDAOImpl;
 import edu.ucmo.ase.ecomm.sc.domain.Address;
 import edu.ucmo.ase.ecomm.sc.domain.AppRole;
 import edu.ucmo.ase.ecomm.sc.domain.AppRoleEnum;
@@ -22,8 +21,9 @@ import edu.ucmo.ase.ecomm.sc.model.SessionModel;
 @Service
 public class AppUserServiceImpl implements AppUserService {
 
-	private static final Logger logger = LoggerFactory.getLogger(AppUserServiceImpl.class);
-	
+	private static final Logger logger = LoggerFactory
+			.getLogger(AppUserServiceImpl.class);
+
 	private AppUserDAO appUserDAO;
 
 	public AppUserDAO getAppUserDAO() {
@@ -37,7 +37,8 @@ public class AppUserServiceImpl implements AppUserService {
 	@Override
 	@Transactional
 	public void addAppUser(SessionModel sm, AppRoleEnum appRole) {
-		AppUser appUser = AppUserHelper.mapCustomerModelToAppUser(sm, appRole, appUserDAO);
+		AppUser appUser = AppUserHelper.mapCustomerModelToAppUser(sm, appRole,
+				appUserDAO);
 		this.appUserDAO.addAppUser(appUser);
 		Set<Address> addresses = appUser.getAddresses();
 		for (Address address : addresses) {
@@ -79,8 +80,7 @@ public class AppUserServiceImpl implements AppUserService {
 			LoginModel loginModel) {
 
 		if (loginModel == null) {
-			throw new IllegalArgumentException(
-					"Login model cannot be null ! ");
+			throw new IllegalArgumentException("Login model cannot be null ! ");
 		}
 
 		AppUser appUser = this.appUserDAO.getAppUserByUserName(loginModel
@@ -89,17 +89,18 @@ public class AppUserServiceImpl implements AppUserService {
 		if (appUser == null) {
 			return false;
 		}
-		
-//		logAppUser(appUser);
-		
+
+		// logAppUser(appUser);
+
 		Set<AppRole> appRoles = appUser.getAppRoles();
 
 		if (appRoles.size() == 1) {
 			for (AppRole appRole : appRoles) {
-				if(appRole.getAppRoleCode().compareTo(AppRoleEnum.ADMIN.getRoleCode() ) ==0)	{
+				if (appRole.getAppRoleCode().compareTo(
+						AppRoleEnum.ADMIN.getRoleCode()) == 0) {
 					sessionModel.setAppRole(AppRoleEnum.ADMIN);
-				}
-				else if (appRole.getAppRoleCode().compareTo(AppRoleEnum.CUSTOMER.getRoleCode() ) ==0)	{
+				} else if (appRole.getAppRoleCode().compareTo(
+						AppRoleEnum.CUSTOMER.getRoleCode()) == 0) {
 					sessionModel.setAppRole(AppRoleEnum.CUSTOMER);
 				}
 			}
@@ -113,38 +114,36 @@ public class AppUserServiceImpl implements AppUserService {
 	}
 
 	private void logAppUser(AppUser appUser) {
-		
-		if(appUser == null)	{
+
+		if (appUser == null) {
 			logger.info("appUser is null");
 			return;
 		}
-		
+
 		Set<AppRole> appRoles = appUser.getAppRoles();
-		
-		if(appRoles == null)	{
+
+		if (appRoles == null) {
 			logger.info("App Role is null");
 		}
-		
+
 		else {
 			for (AppRole appRole : appRoles) {
 				logger.info("app role " + appRole);
 			}
 		}
-		
+
 		Set<Address> addresses = appUser.getAddresses();
-		
-		if(addresses == null)	{
+
+		if (addresses == null) {
 			logger.info("addresses are null");
-			
-		}
-		else {
+
+		} else {
 			for (Address address : addresses) {
 				logger.info("address" + address);
-				
-				if(address.getAddressType() == null)	{
+
+				if (address.getAddressType() == null) {
 					logger.info("addresstype is null");
-				}
-				else	{
+				} else {
 					logger.info("address type " + address.getAddressType());
 				}
 			}
@@ -152,33 +151,3 @@ public class AppUserServiceImpl implements AppUserService {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

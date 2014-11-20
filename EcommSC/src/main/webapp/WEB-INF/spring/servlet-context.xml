@@ -108,6 +108,16 @@
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
+	
+	<beans:bean id="shoppingCartDAO" class="edu.ucmo.ase.ecomm.sc.dao.ShoppingCartDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="productDAO" class="edu.ucmo.ase.ecomm.sc.dao.ProductDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
 
 	<!-- __________________________________________________________________________________________________________________________________________ -->
 
@@ -143,6 +153,17 @@
 		class="edu.ucmo.ase.ecomm.sc.service.AppUserServiceImpl">
 		<beans:property name="appUserDAO" ref="appUserDAO"></beans:property>
 	</beans:bean>
+	
+	<beans:bean id="shoppingCartService"
+		class="edu.ucmo.ase.ecomm.sc.service.ShoppingCartServiceImpl">
+		<beans:property name="shoppingCartDAO" ref="shoppingCartDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="productService"
+		class="edu.ucmo.ase.ecomm.sc.service.ProductServiceImpl">
+		<beans:property name="productDAO" ref="productDAO"></beans:property>
+	</beans:bean>
+	
 
 	<!-- __________________________________________________________________________________________________________________________________________ -->
 

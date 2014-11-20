@@ -21,4 +21,12 @@ public interface ProductService {
 	 * @return {@link ProductModel}
 	 */
 	public ProductModel getProductById(Integer productId);
+	
+	public void addProduct(ProductModel product);
+	
+	public void updateProduct(ProductModel product);
+	
+	public List<ProductModel> getAllProductListByCategory();
+	
+	public List<ProductModel> getProductListByCategoryName(String categoryName);
 }
