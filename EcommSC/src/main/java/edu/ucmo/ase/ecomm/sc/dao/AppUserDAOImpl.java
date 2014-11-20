@@ -9,6 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import edu.ucmo.ase.ecomm.sc.domain.Address;
+import edu.ucmo.ase.ecomm.sc.domain.AddressType;
+import edu.ucmo.ase.ecomm.sc.domain.AppRole;
 import edu.ucmo.ase.ecomm.sc.domain.AppUser;
 
 @Repository
@@ -26,14 +29,14 @@ public class AppUserDAOImpl implements AppUserDAO {
 	public void addAppUser(AppUser p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(p);
-		logger.info("Person saved successfully, Person Details="+p);
+		logger.info("Person saved successfully, AppUser Details="+p);
 	}
 
 	@Override
 	public void updateAppUser(AppUser p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(p);
-		logger.info("Person updated successfully, Person Details="+p);
+		logger.info("Person updated successfully, AppUser Details="+p);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -77,6 +80,42 @@ public class AppUserDAOImpl implements AppUserDAO {
 		}
 		
 		return (AppUser)results.get(0);
+	}
+
+	@Override
+	public AddressType findAddressTypeByCode(String addressTypeCode) {
+		Session session = this.sessionFactory.getCurrentSession();
+		String hql = "FROM AddressType at WHERE at.addressTypeCode='" + addressTypeCode + "'";
+		Query query = session.createQuery(hql);
+		List results = query.list();
+		
+		if(results.size() == 0)	{
+			return null;
+		}
+		
+		return (AddressType)results.get(0);
+	}
+
+	@Override
+	public AppRole findAppRoleByCode(String appRoleCode) {
+		Session session = this.sessionFactory.getCurrentSession();
+		String hql = "FROM AppRole ar WHERE ar.appRoleCode='" + appRoleCode + "'";
+		Query query = session.createQuery(hql);
+		List results = query.list();
+		
+		if(results.size() == 0)	{
+			return null;
+		}
+		
+		return (AppRole)results.get(0);
+	}
+
+	@Override
+	public void addAddress(Address address) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.persist(address);
+		logger.info("Address saved successfully, address Details="+ address);
+		
 	}
 
 }

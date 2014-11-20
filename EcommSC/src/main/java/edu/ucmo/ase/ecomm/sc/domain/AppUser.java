@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.websocket.ClientEndpoint;
 
 /**
  * Entity bean with JPA annotations Hibernate provides JPA implementation
@@ -50,13 +51,17 @@ public class AppUser {
 	@Column(name = "PASSWORD")
 	private String password;
 
+	@Column(name = "EMAIL")
+	private String email;
+
+	@Column(name = "PHONE_NUMBER")
+	private String phNo;
+
 	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "APP_USER_ROLE", joinColumns = { @JoinColumn(name = "APP_USER_ID") }, 
-						inverseJoinColumns = { @JoinColumn(name = "APP_ROLE_ID") })
+	@JoinTable(name = "APP_USER_ROLE", joinColumns = { @JoinColumn(name = "APP_USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "APP_ROLE_ID") })
 	private Set<AppRole> appRoles = new HashSet<AppRole>();
-	
-	
-	@OneToMany(mappedBy="appUser")
+
+	@OneToMany(mappedBy = "appUser")
 	private Set<Address> addresses = new HashSet<Address>();
 
 	public String getPassword() {
@@ -122,7 +127,7 @@ public class AppUser {
 	public void setAppRoles(Set<AppRole> appRoles) {
 		this.appRoles = appRoles;
 	}
-	
+
 	public Set<Address> getAddresses() {
 		return addresses;
 	}
@@ -131,7 +136,22 @@ public class AppUser {
 		this.addresses = addresses;
 	}
 
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhNo() {
+		return phNo;
+	}
+
+	public void setPhNo(String phNo) {
+		this.phNo = phNo;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -145,5 +165,4 @@ public class AppUser {
 		return builder.toString();
 	}
 
-	
 }

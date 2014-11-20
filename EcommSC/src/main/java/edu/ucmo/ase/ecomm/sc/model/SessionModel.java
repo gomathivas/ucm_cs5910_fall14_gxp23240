@@ -17,6 +17,8 @@ public class SessionModel {
 	private boolean checkOutAfterLogIn;
 	private PaymentModel paymentModel;
 	
+	private CustomerModel customerModel;
+	
 	/**
 	 * The user input for searching products
 	 */
@@ -98,6 +100,14 @@ public class SessionModel {
 
 	public void setAppRole(AppRoleEnum appRole) {
 		this.appRole = appRole;
+	}
+
+	public CustomerModel getCustomerModel() {
+		return customerModel;
+	}
+
+	public void setCustomerModel(CustomerModel customerModel) {
+		this.customerModel = customerModel;
 	}
 	
 

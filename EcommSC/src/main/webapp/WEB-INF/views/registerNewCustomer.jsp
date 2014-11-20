@@ -17,7 +17,7 @@
 					<table>
 						<tr>
 							<td><form:label path="firstName">
-									<spring:message text="First Name" />
+									<spring:message text="First Name" /><span style="color: #ff0000;">*</span>
 								</form:label></td>
 							<td><form:input path="firstName"
 									placeholder="Enter a First name here" /></td>
@@ -31,43 +31,43 @@
 						</tr>
 						<tr>
 							<td><form:label path="lastName">
-									<spring:message text="Last Name" />
+									<spring:message text="Last Name" /><span style="color: #ff0000;">*</span>
 								</form:label></td>
 							<td><form:input path="lastName" /></td>
 							<td><form:errors path="lastName" cssStyle="color: #ff0000;" /></td>
 						</tr>
 						<tr>
 							<td><form:label path="gender">
-									<spring:message text="Gender" />
+									<spring:message text="Gender" /><span style="color: #ff0000;">*</span>
 								</form:label></td>
 							<td><form:input path="gender" /></td>
 							<td><form:errors path="gender" cssStyle="color: #ff0000;" /></td>
 						</tr>
 						<tr>
 							<td><form:label path="email">
-									<spring:message text="Email" />
+									<spring:message text="Email" /><span style="color: #ff0000;">*</span>
 								</form:label></td>
 							<td><form:input path="email" /></td>
 							<td><form:errors path="email" cssStyle="color: #ff0000;" /></td>
 						</tr>
 						<tr>
 							<td><form:label path="password">
-									<spring:message text="Password" />
+									<spring:message text="Password" /><span style="color: #ff0000;">*</span>
 								</form:label></td>
-							<td><form:input path="password" /></td>
+							<td><form:password path="password" /></td>
 							<td><form:errors path="password" cssStyle="color: #ff0000;" /></td>
 						</tr>
 						<tr>
 							<td><form:label path="confirmPassword">
-									<spring:message text="Re-Type Password" />
+									<spring:message text="Re-Type Password" /><span style="color: #ff0000;">*</span>
 								</form:label></td>
-							<td><form:input path="confirmPassword" /></td>
+							<td><form:password path="confirmPassword" /></td>
 							<td><form:errors path="confirmPassword"
 									cssStyle="color: #ff0000;" /></td>
 						</tr>
 						<tr>
 							<td><form:label path="address.addressLineOne">
-									<spring:message text="Address Line One" />
+									<spring:message text="Address Line One" /><span style="color: #ff0000;">*</span>
 								</form:label></td>
 							<td><form:input path="address.addressLineOne" /></td>
 							<td><form:errors path="address.addressLineOne"
@@ -75,10 +75,55 @@
 						</tr>
 						<tr>
 							<td><form:label path="address.addressLineTwo">
-									<spring:message text="Address Line Two" />
+									<spring:message text="Address Line Two" /><span style="color: #ff0000;">*</span>
 								</form:label></td>
 							<td><form:input path="address.addressLineTwo" /></td>
 							<td><form:errors path="address.addressLineTwo"
+									cssStyle="color: #ff0000;" /></td>
+						</tr1>
+						<tr>
+							<td><form:label path="address.apt">
+									<spring:message text="Apt / Unit" /><span style="color: #ff0000;">*</span>
+								</form:label></td>
+							<td><form:input path="address.apt" /></td>
+							<td><form:errors path="address.apt"
+									cssStyle="color: #ff0000;" /></td>
+						</tr>
+						
+						<tr>
+							<td><form:label path="address.city">
+									<spring:message text="City" /><span style="color: #ff0000;">*</span>
+								</form:label></td>
+							<td><form:input path="address.city" /></td>
+							<td><form:errors path="address.city"
+									cssStyle="color: #ff0000;" /></td>
+						</tr>
+						
+						
+						<tr>
+							<td><form:label path="address.state">
+									<spring:message text="State" /><span style="color: #ff0000;">*</span>
+								</form:label></td>
+							<td><form:input path="address.state" /></td>
+							<td><form:errors path="address.state"
+									cssStyle="color: #ff0000;" /></td>
+						</tr>
+						
+						<tr>
+							<td><form:label path="address.country">
+									<spring:message text="Country" /><span style="color: #ff0000;">*</span>
+								</form:label></td>
+							<td><form:input path="address.country" /></td>
+							<td><form:errors path="address.country"
+									cssStyle="color: #ff0000;" /></td>
+						</tr>
+						
+						<tr>
+							<td><form:label path="address.zipCode">
+									<spring:message text="Zip Code" /><span style="color: #ff0000;">*</span>
+								</form:label></td>
+							<td><form:input path="address.zipCode" /></td>
+							<td><form:errors path="address.zipCode"
 									cssStyle="color: #ff0000;" /></td>
 						</tr>
 						<tr>

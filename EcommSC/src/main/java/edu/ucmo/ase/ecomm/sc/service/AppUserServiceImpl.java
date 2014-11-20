@@ -14,6 +14,7 @@ import edu.ucmo.ase.ecomm.sc.domain.Address;
 import edu.ucmo.ase.ecomm.sc.domain.AppRole;
 import edu.ucmo.ase.ecomm.sc.domain.AppRoleEnum;
 import edu.ucmo.ase.ecomm.sc.domain.AppUser;
+import edu.ucmo.ase.ecomm.sc.helper.AppUserHelper;
 import edu.ucmo.ase.ecomm.sc.model.CustomerModel;
 import edu.ucmo.ase.ecomm.sc.model.LoginModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
@@ -35,9 +36,13 @@ public class AppUserServiceImpl implements AppUserService {
 
 	@Override
 	@Transactional
-	public void addAppUser(AppUser appUser) {
-		// TODO Auto-generated method stub
-
+	public void addAppUser(SessionModel sm, AppRoleEnum appRole) {
+		AppUser appUser = AppUserHelper.mapCustomerModelToAppUser(sm, appRole, appUserDAO);
+		this.appUserDAO.addAppUser(appUser);
+		Set<Address> addresses = appUser.getAddresses();
+		for (Address address : addresses) {
+			this.appUserDAO.addAddress(address);
+		}
 	}
 
 	@Override
@@ -85,7 +90,7 @@ public class AppUserServiceImpl implements AppUserService {
 			return false;
 		}
 		
-		logAppUser(appUser);
+//		logAppUser(appUser);
 		
 		Set<AppRole> appRoles = appUser.getAppRoles();
 
