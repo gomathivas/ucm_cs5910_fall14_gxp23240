@@ -2,19 +2,18 @@ package edu.ucmo.ase.ecomm.sc.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import edu.ucmo.ase.ecomm.sc.domain.AppUser;
+import edu.ucmo.ase.ecomm.sc.domain.Person;
 
 @Repository
-public class AppUserDAOImpl implements AppUserDAO {
+public class PersonDAOImpl implements PersonDAO {
 	
-	private static final Logger logger = LoggerFactory.getLogger(AppUserDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 
 	private SessionFactory sessionFactory;
 	
@@ -23,14 +22,14 @@ public class AppUserDAOImpl implements AppUserDAO {
 	}
 
 	@Override
-	public void addAppUser(AppUser p) {
+	public void addPerson(Person p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(p);
 		logger.info("Person saved successfully, Person Details="+p);
 	}
 
 	@Override
-	public void updateAppUser(AppUser p) {
+	public void updatePerson(Person p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(p);
 		logger.info("Person updated successfully, Person Details="+p);
@@ -38,45 +37,31 @@ public class AppUserDAOImpl implements AppUserDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<AppUser> listAppUser() {
+	public List<Person> listPersons() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<AppUser> personsList = session.createQuery("from Person").list();
-		for(AppUser p : personsList){
+		List<Person> personsList = session.createQuery("from Person").list();
+		for(Person p : personsList){
 			logger.info("Person List::"+p);
 		}
 		return personsList;
 	}
 
 	@Override
-	public AppUser getAppUserById(int id) {
+	public Person getPersonById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
-		AppUser p = (AppUser) session.load(AppUser.class, new Integer(id));
+		Person p = (Person) session.load(Person.class, new Integer(id));
 		logger.info("Person loaded successfully, Person details="+p);
 		return p;
 	}
 
 	@Override
-	public void removeAppUser(int id) {
+	public void removePerson(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		AppUser p = (AppUser) session.load(AppUser.class, new Integer(id));
+		Person p = (Person) session.load(Person.class, new Integer(id));
 		if(null != p){
 			session.delete(p);
 		}
 		logger.info("Person deleted successfully, person details="+p);
-	}
-
-	@Override
-	public AppUser getAppUserByUserName(String userName) {
-		Session session = this.sessionFactory.getCurrentSession();
-		String hql = "FROM AppUser au WHERE au.userName='" + userName + "'";
-		Query query = session.createQuery(hql);
-		List results = query.list();
-		
-		if(results.size() == 0)	{
-			return null;
-		}
-		
-		return (AppUser)results.get(0);
 	}
 
 }

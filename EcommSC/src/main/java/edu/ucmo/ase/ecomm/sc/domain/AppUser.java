@@ -20,17 +20,35 @@ public class AppUser {
 
 	@Id
 	@Column(name="APP_USER_ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator= "id_Sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "person_sequence")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator= "app_user_id_Sequence")
+	@SequenceGenerator(name = "app_user_id_Sequence", sequenceName = "app_user_id_sequence")
 	private Integer appUserId;
 	
+	@Column(name="FIRST_NAME")
 	private String firstName;
 	
+	@Column(name="MIDDLE_NAME")
 	private String middleName;
 	
+	@Column(name="LAST_NAME")
 	private String lastName;
 	
+	@Column(name="GENDER")
 	private String gender;
+	
+	@Column(name="USER_NAME")
+	private String userName;
+	
+	@Column(name="PASSWORD")
+	private String password;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public Integer getAppUserId() {
 		return appUserId;
@@ -72,5 +90,14 @@ public class AppUser {
 		this.gender = gender;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	
 
 }

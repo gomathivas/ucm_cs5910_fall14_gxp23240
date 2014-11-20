@@ -14,6 +14,9 @@
 				<h2>Please Login In</h2>
 
 				<c:url var="loginAction" value="/login"></c:url>
+					<c:if test="${not empty userNotFoundMessage}">
+	    				<c:out value="${userNotFoundMessage}"></c:out>
+					</c:if>
 
 				<form:form action="${loginAction}" commandName="loginModel">
 					<table>

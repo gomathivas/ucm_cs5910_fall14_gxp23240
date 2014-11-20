@@ -11,4 +11,5 @@ public interface AppUserDAO {
 	public List<AppUser> listAppUser();
 	public AppUser getAppUserById(int id);
 	public void removeAppUser(int id);
+	public AppUser getAppUserByUserName(String userName);
 }

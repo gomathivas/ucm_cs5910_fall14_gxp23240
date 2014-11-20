@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.ucmo.ase.ecomm.sc.model.HeaderModel;
 import edu.ucmo.ase.ecomm.sc.model.LoginModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
+import edu.ucmo.ase.ecomm.sc.service.AppUserService;
 
 @Controller
 @RequestMapping("/login")
@@ -41,6 +42,10 @@ public class LoginController {
 	@Qualifier("sessionModel")
 	private SessionModel sessionModel;
 	
+	@Autowired
+	@Qualifier("appUserService")
+	private AppUserService appUserService;
+	
 	@InitBinder
 	private void initBinder(WebDataBinder binder) {
 		binder.setValidator(validator);
@@ -63,10 +68,18 @@ public class LoginController {
 		if (result.hasErrors()) {
 			return LOGIN;
 		} else {
-			sessionModel.setUserLoggedIn(true);
-			HeaderModel headerModel = sessionModel.getHeaderModel();
-			headerModel.setUser(loginModel.getUserName());
-			session.setAttribute("sessionModel", sessionModel);
+			
+			if(this.appUserService.validateAppUserLogin(this.sessionModel, loginModel))	{
+				this.sessionModel.setUserLoggedIn(true);
+				HeaderModel headerModel = sessionModel.getHeaderModel();
+				headerModel.setUser(loginModel.getUserName());
+				session.setAttribute("sessionModel", sessionModel);
+			}
+			else {
+				model.addAttribute("userNotFoundMessage", "Username and Password did not match. Please try again");
+				return LOGIN;
+			}
+			
 		}
 		
 		if( this.sessionModel.isCheckOutAfterLogIn())	{
