@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ShoppingCartModel {
 
+	private Integer shoppingCartId;
 	private ProductModel product;
 	private BigDecimal subTotal = BigDecimal.ZERO;
 	private int quantity;
@@ -33,6 +34,14 @@ public class ShoppingCartModel {
 
 	public void incrementQuantity() {
 		quantity++;
+	}
+
+	public Integer getShoppingCartId() {
+		return shoppingCartId;
+	}
+
+	public void setShoppingCartId(Integer shoppingCartId) {
+		this.shoppingCartId = shoppingCartId;
 	}
 
 

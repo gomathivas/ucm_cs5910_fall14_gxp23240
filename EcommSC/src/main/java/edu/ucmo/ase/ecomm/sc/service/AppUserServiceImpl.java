@@ -13,7 +13,9 @@ import edu.ucmo.ase.ecomm.sc.domain.Address;
 import edu.ucmo.ase.ecomm.sc.domain.AppRole;
 import edu.ucmo.ase.ecomm.sc.domain.AppRoleEnum;
 import edu.ucmo.ase.ecomm.sc.domain.AppUser;
+import edu.ucmo.ase.ecomm.sc.domain.ShoppingCart;
 import edu.ucmo.ase.ecomm.sc.helper.AppUserHelper;
+import edu.ucmo.ase.ecomm.sc.helper.ShoppingCartHelper;
 import edu.ucmo.ase.ecomm.sc.model.CustomerModel;
 import edu.ucmo.ase.ecomm.sc.model.LoginModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
@@ -90,7 +92,7 @@ public class AppUserServiceImpl implements AppUserService {
 			return false;
 		}
 
-		// logAppUser(appUser);
+//		 logAppUser(appUser);
 
 		Set<AppRole> appRoles = appUser.getAppRoles();
 
@@ -107,10 +109,15 @@ public class AppUserServiceImpl implements AppUserService {
 		}
 
 		if (appUser.getPassword().compareTo(loginModel.getPassword()) == 0) {
+			mapReqDomainToModel(appUser, sessionModel);
 			return true;
 		}
 
 		return false;
+	}
+
+	private void mapReqDomainToModel(AppUser appUser, SessionModel sessionModel) {
+		ShoppingCartHelper.mapAllShoppingCartToModel(appUser.getShoppingCarts(), sessionModel.getShoppingCartListModel());
 	}
 
 	private void logAppUser(AppUser appUser) {
@@ -146,6 +153,17 @@ public class AppUserServiceImpl implements AppUserService {
 				} else {
 					logger.info("address type " + address.getAddressType());
 				}
+			}
+		}
+		
+		Set<ShoppingCart> scs = appUser.getShoppingCarts();
+		
+		if(scs == null)	{
+			logger.info("shopping cart is null");
+		}
+		else	{
+			for (ShoppingCart sc : scs) {
+				logger.info("Shopping cart " + sc);
 			}
 		}
 	}

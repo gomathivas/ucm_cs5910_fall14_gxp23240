@@ -88,6 +88,16 @@ public class ShoppingCart {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ShoppingCart [shoppingCartId=").append(shoppingCartId)
+				.append(", quantity=").append(quantity)
+				.append(", productPrice=").append(productPrice)
+				.append(", active=").append(active).append("]");
+		return builder.toString();
+	}
 	
 	
 
