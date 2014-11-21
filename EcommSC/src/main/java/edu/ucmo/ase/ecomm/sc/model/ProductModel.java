@@ -1,6 +1,9 @@
 package edu.ucmo.ase.ecomm.sc.model;
 
 import java.math.BigDecimal;
+import java.sql.Blob;
+
+import javax.persistence.Column;
 
 /**
  * @author dgunasek
@@ -14,6 +17,12 @@ public class ProductModel {
 
 	private BigDecimal newPrice;
 	private BigDecimal oldPrice;
+	
+	private Blob productImage;
+	
+    private String contentType;
+	
+	 private String filename;
 
 	public ProductModel() {
 		super();
@@ -94,6 +103,30 @@ public class ProductModel {
 
 	public void setOldPrice(BigDecimal oldPrice) {
 		this.oldPrice = oldPrice;
+	}
+
+	public Blob getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(Blob productImage) {
+		this.productImage = productImage;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 
 	@Override

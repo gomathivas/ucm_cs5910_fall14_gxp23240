@@ -1,12 +1,13 @@
 package edu.ucmo.ase.ecomm.sc.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.ucmo.ase.ecomm.sc.dao.ProductDAO;
+import edu.ucmo.ase.ecomm.sc.domain.Product;
+import edu.ucmo.ase.ecomm.sc.helper.ProductHelper;
 import edu.ucmo.ase.ecomm.sc.model.ProductModel;
 
 @Service
@@ -15,20 +16,26 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO;
 
 	@Override
+	@Transactional
 	public List<ProductModel> getProductList() {
-		return generateProdectList();
+		List<Product> products = this.productDAO.findAllProducts();
+		List<ProductModel> pms = ProductHelper.mapProductToProductModel(products);
+		return pms;
 	}
 
 	@Override
 	@Transactional
 	public ProductModel getProductById(Integer productId) {
-		return hcFindProductById(productId);
+		Product product = this.productDAO.findProductByID(productId);
+		ProductModel pm = ProductHelper.mapProductToProductModel(product);
+		return pm;
 	}
 
 	/*------------------------------------------------------------------------------------------- */
 	/*
 	 * Hard coded methods to be replaced
-	 */private List<ProductModel> generateProdectList() {
+	 */
+/*	private List<ProductModel> generateProdectList() {
 		List<ProductModel> pm = new ArrayList<ProductModel>();
 		pm.add(new ProductModel(1, "my book", 270, 350));
 		pm.add(new ProductModel(2, "Iphone 6", 100, 350));
@@ -51,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
 			}
 		}
 		return selectedProduct;
-	}
+	}*/
 
 	@Override
 	@Transactional
@@ -87,6 +94,23 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductModel> getProductListByCategoryName(String categoryName) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	@Transactional
+	public void removeProduct(ProductModel product) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	@Transactional
+	public void addProduct(ProductModel pm, byte[] bytes,
+			String originalFilename, String contentType) {
+		
+		Product product = ProductHelper.mapProductModelToProdct(pm, originalFilename, contentType);
+		
+		this.productDAO.addProduct(product, bytes);		
 	}
 
 }

@@ -30,8 +30,9 @@
 								<!-- <a href="details.html">Motorola 156 MX-VL</a> -->
 							</div>
 							<div class="product_img">
-								<a href="${productDetailsUrl}"><img src="images/laptop.gif" alt=""
-									border="0" /></a>
+								<a href="${productDetailsUrl}"> 
+								<img src="<c:url value='/imageDisplay?productId=${product.productId}'/>" alt=""	border="0" /></a>  <!--  <img src="images/laptop.gif" alt=""	border="0" /> --><%--  "/EcommSC/imageDisplay?id=${product.productId}" --%>
+									
 							</div>
 							<div class="prod_price">
 								<span class="reduce">${product.oldPrice}$</span> <span class="price">${product.newPrice}$</span>

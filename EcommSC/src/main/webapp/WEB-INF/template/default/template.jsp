@@ -11,11 +11,51 @@
 body {
 	background: url(images/bg.jpg) no-repeat #fff center top;
 	padding: 0;
-	font-family: Arial, Helvetica, sans-serif;
+/* 	font-family: Arial, Helvetica, sans-serif; */
 	font-size: 11px;
 	margin: 0px auto auto auto;
 	color: #000;
+	font-family: sans-serif;
+	font-size:12px;
+	overflow: scroll;
 }
+.page {
+	min-height: 100%;
+	position: relative;
+	overflow: scroll;
+}
+
+		html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input {
+    		font-size: 100%;
+		}
+		body {
+			
+		}
+		.data, .data td {
+			border-collapse: collapse;
+			width: 550px;
+			border: 1px solid #aaa;
+			padding: 2px;
+		}
+		.data th {
+			background-color: #9ECFFF;
+    		color: black;
+		    font-weight: bold;
+		}
+	h1, h2, h3 {
+	    font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+	    font-weight: bold;
+	}
+	h1 {
+	    font-size: 170%;
+	}		
+	h2 {
+	    font-size: 140%;
+	}	
+	h3 {
+	    font-size: 120%;
+	}	
+	
 .tg {
 	border-collapse: collapse;
 	border-spacing: 0;

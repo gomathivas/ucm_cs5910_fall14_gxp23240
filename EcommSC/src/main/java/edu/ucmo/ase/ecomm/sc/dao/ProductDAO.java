@@ -14,6 +14,10 @@ public interface ProductDAO {
 	
 	public void updateProductByID(Integer productID);
 	
+	public void removeProductByID(Integer productID);
+	
 	public void addProduct(Product product);
+
+	public void addProduct(Product product, byte[] bytes);
 	
 }

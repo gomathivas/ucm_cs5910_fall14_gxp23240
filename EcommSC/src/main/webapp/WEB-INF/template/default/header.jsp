@@ -10,7 +10,6 @@
 
 <div class="header">
 	<div class="header_ucm_image">
-		<h1>Welcome To Gomathi</h1>
 	<!-- 	<img class="imgHeaderUCM" src="images/UCM_twolineCE_2color.png" alt=""
 			title="" border="0" /> -->
 		<img class="imgHeaderUCM" src="<c:url value='/images/UCM_twolineCE_2color.png'/>" alt="" border="0" />

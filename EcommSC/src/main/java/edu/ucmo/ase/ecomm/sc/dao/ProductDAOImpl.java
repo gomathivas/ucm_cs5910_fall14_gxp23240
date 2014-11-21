@@ -1,7 +1,11 @@
 package edu.ucmo.ase.ecomm.sc.dao;
 
+import java.sql.Blob;
 import java.util.List;
 
+import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +25,18 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Product> findAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+        List<Product> products = null;
+        try {
+        	products = (List<Product>)session.createQuery("from Product").list();
+ 
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return products;
 	}
 
 	@Override
@@ -35,8 +47,8 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public Product findProductByID(Integer productID) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+        return (Product)session.get(Product.class, productID);
 	}
 
 	@Override
@@ -47,8 +59,28 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public void addProduct(Product product) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+        session.save(product);
+	}
+
+
+	@Override
+	public void removeProductByID(Integer productID) {
+		Session session = sessionFactory.getCurrentSession();
+        
+        Product product = (Product)session.get(Product.class, productID);
+         
+        session.delete(product);
 		
+	}
+
+
+	@Override
+	public void addProduct(Product product, byte[] bytes) {
+		Session session = sessionFactory.getCurrentSession();
+		Blob productImage = Hibernate.getLobCreator(sessionFactory.getCurrentSession()).createBlob(bytes);
+		product.setProductImage(productImage);
+        session.save(product);
 	}
 
 }

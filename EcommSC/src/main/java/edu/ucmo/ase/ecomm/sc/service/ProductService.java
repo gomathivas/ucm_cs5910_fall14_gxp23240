@@ -26,7 +26,12 @@ public interface ProductService {
 	
 	public void updateProduct(ProductModel product);
 	
+	public void removeProduct(ProductModel product);
+	
 	public List<ProductModel> getAllProductListByCategory();
 	
 	public List<ProductModel> getProductListByCategoryName(String categoryName);
+
+	public void addProduct(ProductModel pm, byte[] bytes,
+			String originalFilename, String contentType);
 }

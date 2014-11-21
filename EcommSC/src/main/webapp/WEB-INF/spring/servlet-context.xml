@@ -24,7 +24,12 @@
 	<resources mapping="/images/**" location="/resources/images/" />
 	<!-- <resources mapping="/css/**" location="/resources/css" ></resources> -->
 
-
+    <beans:bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ 
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <beans:property name="maxUploadSize" value="10000000" />
+    </beans:bean>
 	<!-- __________________________________________________________________________________________________________________________________________ -->
 	<!-- Resource Bundle Message -->
 	<beans:bean id="messageSource"
@@ -81,6 +86,7 @@
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.AppRole</beans:value>
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.Address</beans:value>
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.AddressType</beans:value>
+				<beans:value>edu.ucmo.ase.ecomm.sc.domain.Product</beans:value>
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.Person</beans:value>
 			</beans:list>
 		</beans:property>
@@ -118,6 +124,11 @@
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
+	
+	<beans:bean id="paymentDAO" class="edu.ucmo.ase.ecomm.sc.dao.PaymentDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
 
 	<!-- __________________________________________________________________________________________________________________________________________ -->
 
@@ -146,8 +157,8 @@
 	<!-- __________________________________________________________________________________________________________________________________________ -->
 
 	<!-- Services -->
-	<beans:bean id="productService"
-		class="edu.ucmo.ase.ecomm.sc.service.ProductServiceImpl"></beans:bean>
+	<!-- <beans:bean id="productService"
+		class="edu.ucmo.ase.ecomm.sc.service.ProductServiceImpl"></beans:bean> -->
 
 	<beans:bean id="appUserService"
 		class="edu.ucmo.ase.ecomm.sc.service.AppUserServiceImpl">
@@ -162,6 +173,11 @@
 	<beans:bean id="productService"
 		class="edu.ucmo.ase.ecomm.sc.service.ProductServiceImpl">
 		<beans:property name="productDAO" ref="productDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="paymentService"
+		class="edu.ucmo.ase.ecomm.sc.service.PaymentServiceImpl">
+		<beans:property name="paymentDAO" ref="paymentDAO"></beans:property>
 	</beans:bean>
 	
 

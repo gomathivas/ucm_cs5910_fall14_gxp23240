@@ -31,7 +31,5 @@ public class ApplicationContext {
 	public void setSearchKeyWord(String searchKeyWord) {
 		this.searchKeyWord = searchKeyWord;
 	}
-
-	
-	
+		
 }
