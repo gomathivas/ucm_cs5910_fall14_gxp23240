@@ -59,8 +59,8 @@
 			<span class="reduce">350$</span> <span class="price">270$</span>
 		</div>
 	</div>
-	<div class="title_box">Manufacturers</div>
-	<ul class="left_menu">
+	<div class="title_box"><!-- Manufacturers --></div>
+<!-- 	<ul class="left_menu">
 		<li class="odd"><a href="">Sony</a></li>
 		<li class="even"><a href="">Samsung</a></li>
 		<li class="odd"><a href="">Daewoo</a></li>
@@ -69,8 +69,8 @@
 		<li class="even"><a href="">Motorola</a></li>
 		<li class="odd"><a href="">Phillips</a></li>
 		<li class="even"><a href="">Beko</a></li>
-	</ul>
+	</ul> -->
 	<div class="banner_adds">
-		<a href=""><img src="images/bann1.jpg" alt="" border="0" /></a>
+		<!-- <a href=""><img src="images/bann1.jpg" alt="" border="0" /></a> -->
 	</div>
 </div>

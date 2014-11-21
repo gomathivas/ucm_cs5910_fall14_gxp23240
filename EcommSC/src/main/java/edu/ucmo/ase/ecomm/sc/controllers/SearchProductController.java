@@ -23,44 +23,51 @@ import edu.ucmo.ase.ecomm.sc.service.ProductService;
 
 @Controller
 public class SearchProductController {
-	
+
 	@Autowired
 	@Qualifier("appContext")
 	private ApplicationContext appContext;
-	
+
 	@Autowired
 	@Qualifier("sessionModel")
 	private SessionModel sessionModel;
-	
+
 	@Autowired
 	@Qualifier("productService")
 	private ProductService productService;
-	
 
-	@RequestMapping(value= "/search/{searchKeyWord}", method = RequestMethod.GET)
-	public String doSearch(Model model,  @PathVariable("searchKeyWord") String searchKeyWord) {
-		
+	@RequestMapping(value = "/search/{searchKeyWord}", method = RequestMethod.GET)
+	public String doSearch(Model model,
+			@PathVariable("searchKeyWord") String searchKeyWord) {
+
 		this.sessionModel.setSearchKeyWord(searchKeyWord);
-		List<ProductModel> pms = this.productService.getProductModelByKeyWord(searchKeyWord);
-		
+		List<ProductModel> pms = this.productService
+				.getProductModelByKeyWord(searchKeyWord);
+
 		sessionModel.setSearchResultPMs(pms);
-		
+
 		return "redirect:/search";
 	}
-	
-	@RequestMapping(value="/search")
-	public String showShowProductsDeatils( Model model,  @ModelAttribute("searchModel") SearchModel searchModel, HttpServletResponse response,HttpServletRequest request)	{
-		String returnView = "search";
-		model.addAttribute("productList", sessionModel.getSearchResultPMs());
-		return returnView;
-	}
-	
-	
-//	@RequestMapping(value="/search")
-//	public String showShowProductsDeatils(HttpSession session, Model model, @RequestParam("search") String searchKeyWord, HttpServletResponse response,HttpServletRequest request)	{
-//		String returnView = "search";
-//		model.addAttribute("productList", sessionModel.getSearchResultPMs());
-//		return returnView;
-//	}
 
+	@RequestMapping(value = "/search")
+	public String showSearch(Model model) {
+		SearchModel sm = new SearchModel();
+		sessionModel.setSearchModel(sm);
+		model.addAttribute("searchModel", sm);
+		return "search";
+	}
+
+	@RequestMapping(value = "/searchProduct")
+	public String doSearch(Model model,
+			@ModelAttribute("searchModel") SearchModel sm) {
+		sessionModel.setSearchModel(sm);
+		model.addAttribute("searchModel", sm);
+		this.sessionModel.setSearchKeyWord(sm.getSearchKeyWord());
+		List<ProductModel> pms = this.productService
+				.getProductModelByKeyWord(sm.getSearchKeyWord());
+		
+		model.addAttribute("productList", pms);
+
+		return "search";
+	}
 }

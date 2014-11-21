@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -87,10 +88,15 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public List<Product> findProductsByKeyWord(String searchKeyWord) {
 		Session session = sessionFactory.getCurrentSession();
+//		entityManager.createQuery("select at from AttendeesVO at where lower(at.user.firstName) LIKE lower(:searchKeyword)",AttendeesVO.class); 
+//		from User u where str(u.id) like :userId
         List<Product> products = null;
         try {
-        	products = (List<Product>)session.createQuery("from Product").list();
- 
+
+        			Query createQuery = session.createQuery("from Product where lower(productName) like lower(:searchKeyword)");
+        			createQuery.setParameter("searchKeyword", "%" +searchKeyWord + "%");
+        			
+                	products = (List<Product>) createQuery.list();
         } catch (HibernateException e) {
             e.printStackTrace();
         }

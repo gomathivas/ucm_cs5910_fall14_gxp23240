@@ -865,7 +865,7 @@ a.contact {
 		<tiles:insertAttribute name="header" />
 		<tiles:insertAttribute name="top-menuTab"/>
 		<div class="content">
-			<tiles:insertAttribute name="left-menu" />
+			<%-- <tiles:insertAttribute name="left-menu" /> --%>
 			<tiles:insertAttribute name="body" />
 			<tiles:insertAttribute name="rightPanel" />
 		</div>

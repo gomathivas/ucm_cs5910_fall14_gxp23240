@@ -60,7 +60,7 @@
 						<th width="40">Qty</th>
 						<th width="80">SubTotal</th>
 						<th width="60">Edit</th>
-						<th width="60">Remove</th>
+						<!-- <th width="60">Remove</th> -->
 					</tr>
 					<c:forEach items="${sclistModel.scmList}" var="scmodel"
 						varStatus="status">
@@ -75,8 +75,8 @@
 							<td><a
 								href="<c:url value='/editSC/${scmodel.product.productId}' />">Edit</a>
 							</td>
-							<td><a
-								href="<c:url value='/removeSC/${scmodel.product.productId}' />">Remove</a></td>
+						<%-- 	<td><a
+								href="<c:url value='/removeSC/${scmodel.product.productId}' />">Remove</a></td> --%>
 						</tr>
 					</c:forEach>
 					<tr>

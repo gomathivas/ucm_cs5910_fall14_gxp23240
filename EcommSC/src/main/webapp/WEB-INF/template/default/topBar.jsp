@@ -13,16 +13,18 @@
 	<div class="top_search">
 		<div class="search_text">
 
-			<a href="">Search</a>
+			<spring:url value="/search" var="searchUrl" htmlEscape="true" />
+			<a href="${searchUrl}"> 
+			</a> <a href="${searchUrl}">Search</a>
 		</div>
 		<!-- searchKey -->
-		
+
 		<%-- <input type="text" class="search_input" name="search" /> 
 		<input type="submit" name = "search" src="images/search.gif" class="search_bt" onclick="submitPage('${pageContext.request.contextPath}/search"/>  --%>
 		<%-- <a class="search_bt" href="" onclick="submitPage('${pageContext.request.contextPath}/search"> 
 								<img src="images/search.gif" alt=""	border="0" /></a>  --%>
 	</div>
-<!-- 	<div class="languages">
+	<!-- 	<div class="languages">
 		<div class="lang_text">Languages:</div>
 		<a href=""
 			class="lang"><img src="images/en.gif" alt="" border="0" /></a> <a

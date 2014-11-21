@@ -13,7 +13,31 @@
 		
 	<c:set var="requestingPage" value="search" scope="session"/>
 	
-			<div class="center_title_bar">Search Result</div>
+			<div class="center_title_bar">Search Result
+			<c:if test="${empty productList}">
+			<c:url var="searchAction" value="/searchProduct"></c:url>
+					<c:if test="${not empty productsNotFound}">
+	    				<c:out value="${productsNotFound}"></c:out>
+					</c:if>
+
+				<form:form action="${searchAction}" commandName="searchModel">
+					<table>
+						<tr>
+							<td><form:label path="searchKeyWord">
+									<spring:message text="Search Keyword" />
+								</form:label></td>
+							<td><form:input path="searchKeyWord" /></td>
+							
+						</tr>
+						
+						<tr>
+							<td colspan="2"><input type="submit"
+								value="<spring:message text="Search"/>" /></td>
+						</tr>
+					</table>
+				</form:form>
+				</c:if>
+				</div>
 
 			<c:if test="${!empty productList}">
 				<c:forEach items="${productList}" var="product">

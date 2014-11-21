@@ -27,6 +27,8 @@ public class SessionModel {
 	
 	private List<ProductModel> searchResultPMs;
 	
+	private SearchModel searchModel;
+	
 	/**
 	 * The user input for searching products
 	 */
@@ -143,6 +145,14 @@ public class SessionModel {
 
 	public void setEditSC(boolean editSC) {
 		this.editSC = editSC;
+	}
+
+	public SearchModel getSearchModel() {
+		return searchModel;
+	}
+
+	public void setSearchModel(SearchModel searchModel) {
+		this.searchModel = searchModel;
 	}
 
 	public boolean isSaveScAfterLogin() {

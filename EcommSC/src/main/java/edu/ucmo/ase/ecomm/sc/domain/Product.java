@@ -45,8 +45,8 @@ public class Product {
 	 @Column(name="file_name")
 	 private String filename;
 	 
-	 @OneToOne(mappedBy = "product")
-	 private ShoppingCart shoppingCart;
+	 @OneToMany(mappedBy = "product")
+	 private Set<ShoppingCart> shoppingCarts;
 	 
 	 @OneToMany(mappedBy = "product")
 	 private Set<OrderItem> orderItems;
@@ -107,9 +107,7 @@ public class Product {
 		this.filename = filename;
 	}
 
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
-	}
+
 
 	public Set<OrderItem> getOrderItems() {
 		return orderItems;
@@ -119,10 +117,15 @@ public class Product {
 		this.orderItems = orderItems;
 	}
 
-	public void setShoppingCart(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
+	public Set<ShoppingCart> getShoppingCarts() {
+		return shoppingCarts;
 	}
-	
+
+	public void setShoppingCarts(Set<ShoppingCart> shoppingCarts) {
+		this.shoppingCarts = shoppingCarts;
+	}
+
+
 	
 	
 	

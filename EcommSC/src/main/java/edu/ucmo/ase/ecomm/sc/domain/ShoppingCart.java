@@ -28,8 +28,8 @@ public class ShoppingCart {
 	@JoinColumn(name = "APP_USER_ID")
 	private AppUser appUser;
 	
-	@OneToOne(cascade = { CascadeType.ALL})
-	@JoinColumn(name="PRODUCT_ID" )
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "PRODUCT_ID")
 	private Product product;
 	
 	@Column(name = "QUANTITY")
