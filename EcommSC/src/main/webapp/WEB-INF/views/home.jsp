@@ -35,7 +35,7 @@
 									
 							</div>
 							<div class="prod_price">
-								<span class="reduce">${product.oldPrice}$</span> <span class="price">${product.newPrice}$</span>
+								<span class="price">${product.newPrice}$</span>
 							</div>
 						</div>
 						<div class="bottom_prod_box"></div>

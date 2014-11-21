@@ -6,6 +6,8 @@ package edu.ucmo.ase.ecomm.sc.service;
 import java.util.List;
 
 import edu.ucmo.ase.ecomm.sc.model.ProductModel;
+import edu.ucmo.ase.ecomm.sc.model.ShoppingCartListModel;
+import edu.ucmo.ase.ecomm.sc.model.ShoppingCartModel;
 
 /**
  * @author gomathi
@@ -34,4 +36,7 @@ public interface ProductService {
 
 	public void addProduct(ProductModel pm, byte[] bytes,
 			String originalFilename, String contentType);
+
+	public List<ProductModel> getProductModelByKeyWord(String searchKeyWord);
+
 }

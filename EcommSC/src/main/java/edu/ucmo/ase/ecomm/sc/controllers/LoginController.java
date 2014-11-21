@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.ucmo.ase.ecomm.sc.domain.AppRoleEnum;
 import edu.ucmo.ase.ecomm.sc.model.HeaderModel;
 import edu.ucmo.ase.ecomm.sc.model.LoginModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
@@ -29,6 +30,8 @@ public class LoginController {
 	private static final String HOME = "home";
 	private static final String PAYMENT_SHIPPING = "paymentAndShipping";
 	private static final String CHECK_OUT = "/checkOut";
+	private static final String ADMIN_EDIT_PRODUCT = "addProduct";
+	private static final String SAVE_CART_MAP = "/saveCart";
 
 	@Autowired
 	@Qualifier("loginValidator")
@@ -74,6 +77,12 @@ public class LoginController {
 				HeaderModel headerModel = sessionModel.getHeaderModel();
 				headerModel.setUser(loginModel.getUserName());
 				session.setAttribute("sessionModel", sessionModel);
+				
+				if(sessionModel.getAppRole().getRoleCode().compareTo(AppRoleEnum.ADMIN.getRoleCode()) == 0)	{
+					return REDIRECT + ADMIN_EDIT_PRODUCT;
+				}
+				
+				
 			}
 			else {
 				model.addAttribute("userNotFoundMessage", "Username and Password did not match. Please try again");
@@ -85,6 +94,10 @@ public class LoginController {
 		if( this.sessionModel.isCheckOutAfterLogIn())	{
 			this.sessionModel.setCheckOutAfterLogIn(false);
 			return REDIRECT + CHECK_OUT;
+		}
+		if( this.sessionModel.isSaveScAfterLogin())	{
+			this.sessionModel.setSaveScAfterLogin(false);
+			return REDIRECT + SAVE_CART_MAP;
 		}
 		
 		return REDIRECT + HOME;

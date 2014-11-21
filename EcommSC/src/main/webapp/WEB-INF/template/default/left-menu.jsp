@@ -8,18 +8,10 @@
 <div class="left_content">
       <div class="title_box">Categories</div>
       <ul class="left_menu">
-        <li class="odd"><a href="">Processors</a></li>
-        <li class="even"><a href="">Motherboards</a></li>
-        <li class="odd"><a href="">Desktops</a></li>
-        <li class="even"><a href="">Laptops &amp; Notebooks</a></li>
-        <li class="odd"><a href="">Processors</a></li>
-        <li class="even"><a href="">Motherboards</a></li>
-        <li class="odd"><a href="">Processors</a></li>
-        <li class="even"><a href="">Motherboards</a></li>
-        <li class="odd"><a href="">Desktops</a></li>
-        <li class="even"><a href="">Laptops &amp; Notebooks</a></li>
-        <li class="odd"><a href="">Processors</a></li>
-        <li class="even"><a href="">Motherboards</a></li>
+        <li class="odd"><a href="">Books</a></li>
+        <li class="even"><a href="">Phone</a></li>
+        <li class="odd"><a href="">Computer</a></li>
+        
       </ul>
       <div class="title_box">Special Products</div>
       <div class="border_box">

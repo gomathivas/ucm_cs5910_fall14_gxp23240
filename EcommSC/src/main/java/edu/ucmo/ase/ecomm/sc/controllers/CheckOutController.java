@@ -16,13 +16,16 @@ import edu.ucmo.ase.ecomm.sc.model.PaymentModel;
 import edu.ucmo.ase.ecomm.sc.model.SessionModel;
 import edu.ucmo.ase.ecomm.sc.service.PaymentService;
 import edu.ucmo.ase.ecomm.sc.service.ProductService;
+import edu.ucmo.ase.ecomm.sc.service.ShoppingCartService;
 
 @Controller
 public class CheckOutController {
 
 	private static final String PAYMENT_AND_SHIPPING = "paymentAndShipping";
 	private static final String REDIRECT = "redirect:/";
+	private static final String HOME = "home";
 	private static final String CHECK_OUT = "/checkOut";
+	private static final String SAVE_CART_MAP = "/saveCart";
 	private static final String LOG_IN = "login";
 	private static final String PAYMENT_CONFIRMATION_MAP = "/paymentConfirmation";
 	private static final String PAYMENT_CONFIRMATION_SUCCESS = "paymentConfirmation";
@@ -42,6 +45,10 @@ public class CheckOutController {
 	@Autowired
 	@Qualifier("paymentService")
 	private PaymentService paymentService;
+	
+	@Autowired
+	@Qualifier("shoppingCartService")
+	private ShoppingCartService scService;
 
 	@Autowired
 	@Qualifier("paymentValidator")
@@ -75,4 +82,19 @@ public class CheckOutController {
 		return PAYMENT_CONFIRMATION_SUCCESS;
 	}
 
+	@RequestMapping(value = SAVE_CART_MAP)
+	public String saveCart(Model model) {
+		
+		if (!this.sessionModel.isUserLoggedIn()) {
+			this.sessionModel.setSaveScAfterLogin(true);
+			return REDIRECT + LOG_IN;
+		}
+
+		else {
+			this.scService.saveShoppingCart(this.sessionModel.getShoppingCartListModel(), this.sessionModel.getHeaderModel());
+		}
+				
+		return REDIRECT + HOME;
+	}
+	
 }

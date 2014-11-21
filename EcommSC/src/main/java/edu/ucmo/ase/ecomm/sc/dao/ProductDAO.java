@@ -19,5 +19,7 @@ public interface ProductDAO {
 	public void addProduct(Product product);
 
 	public void addProduct(Product product, byte[] bytes);
+
+	public List<Product> findProductsByKeyWord(String searchKeyWord);
 	
 }

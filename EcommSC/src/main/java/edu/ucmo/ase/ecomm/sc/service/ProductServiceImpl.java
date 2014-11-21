@@ -9,6 +9,8 @@ import edu.ucmo.ase.ecomm.sc.dao.ProductDAO;
 import edu.ucmo.ase.ecomm.sc.domain.Product;
 import edu.ucmo.ase.ecomm.sc.helper.ProductHelper;
 import edu.ucmo.ase.ecomm.sc.model.ProductModel;
+import edu.ucmo.ase.ecomm.sc.model.ShoppingCartListModel;
+import edu.ucmo.ase.ecomm.sc.model.ShoppingCartModel;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -112,5 +114,18 @@ public class ProductServiceImpl implements ProductService {
 		
 		this.productDAO.addProduct(product, bytes);		
 	}
+
+	@Override
+	@Transactional
+	public List<ProductModel> getProductModelByKeyWord(String searchKeyWord) {
+		
+		List<Product> ps = this.productDAO.findProductsByKeyWord(searchKeyWord);
+		
+		List<ProductModel> pms = ProductHelper.mapProductToProductModel(ps);
+		
+		return pms;
+	}
+
+
 
 }

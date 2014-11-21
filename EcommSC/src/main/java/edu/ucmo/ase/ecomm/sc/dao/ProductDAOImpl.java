@@ -83,4 +83,18 @@ public class ProductDAOImpl implements ProductDAO{
         session.save(product);
 	}
 
+
+	@Override
+	public List<Product> findProductsByKeyWord(String searchKeyWord) {
+		Session session = sessionFactory.getCurrentSession();
+        List<Product> products = null;
+        try {
+        	products = (List<Product>)session.createQuery("from Product").list();
+ 
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return products;
+	}
+
 }

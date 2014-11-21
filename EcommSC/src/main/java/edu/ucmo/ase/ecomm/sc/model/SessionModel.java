@@ -1,5 +1,8 @@
 package edu.ucmo.ase.ecomm.sc.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.annotation.Scope;
 
 import edu.ucmo.ase.ecomm.sc.domain.AppRoleEnum;
@@ -15,9 +18,14 @@ public class SessionModel {
 	private ProductModel selectedProductDetails;
 	private String addToCartRequestPage;
 	private boolean checkOutAfterLogIn;
+	private boolean saveScAfterLogin;
 	private PaymentModel paymentModel;
 	
 	private CustomerModel customerModel;
+	private ShoppingCartModel editSCModel;
+	private boolean editSC = false;
+	
+	private List<ProductModel> searchResultPMs;
 	
 	/**
 	 * The user input for searching products
@@ -109,7 +117,41 @@ public class SessionModel {
 	public void setCustomerModel(CustomerModel customerModel) {
 		this.customerModel = customerModel;
 	}
-	
 
+	public List<ProductModel> getSearchResultPMs() {
+		if(this.searchResultPMs == null)	{
+			this.searchResultPMs = new ArrayList<ProductModel>();
+		}
+		return searchResultPMs;
+	}
+
+	public void setSearchResultPMs(List<ProductModel> searchResultPMs) {
+		this.searchResultPMs = searchResultPMs;
+	}
+
+	public ShoppingCartModel getEditSCModel() {
+		return editSCModel;
+	}
+
+	public void setEditSCModel(ShoppingCartModel editSCModel) {
+		this.editSCModel = editSCModel;
+	}
+
+	public boolean isEditSC() {
+		return editSC;
+	}
+
+	public void setEditSC(boolean editSC) {
+		this.editSC = editSC;
+	}
+
+	public boolean isSaveScAfterLogin() {
+		return saveScAfterLogin;
+	}
+
+	public void setSaveScAfterLogin(boolean saveScAfterLogin) {
+		this.saveScAfterLogin = saveScAfterLogin;
+	}
+	
 	
 }
