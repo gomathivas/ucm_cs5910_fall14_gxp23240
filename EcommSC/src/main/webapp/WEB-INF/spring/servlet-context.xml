@@ -87,6 +87,7 @@
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.Address</beans:value>
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.AddressType</beans:value>
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.Product</beans:value>
+				<beans:value>edu.ucmo.ase.ecomm.sc.domain.ShoppingCart</beans:value>
 				<beans:value>edu.ucmo.ase.ecomm.sc.domain.Person</beans:value>
 			</beans:list>
 		</beans:property>
@@ -168,6 +169,8 @@
 	<beans:bean id="shoppingCartService"
 		class="edu.ucmo.ase.ecomm.sc.service.ShoppingCartServiceImpl">
 		<beans:property name="shoppingCartDAO" ref="shoppingCartDAO"></beans:property>
+		<beans:property name="appUserDAO" ref="appUserDAO"></beans:property>
+		<beans:property name="productDAO" ref="productDAO"></beans:property>
 	</beans:bean>
 	
 	<beans:bean id="productService"

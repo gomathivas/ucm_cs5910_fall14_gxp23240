@@ -2,6 +2,7 @@ package edu.ucmo.ase.ecomm.sc.model;
 
 public class CustomerModel {
 
+	private Integer customerId;
 	private String firstName;
 	private String lastName;
 	private String middleName;
@@ -84,6 +85,14 @@ public class CustomerModel {
 
 	public void setPhNo(String phNo) {
 		this.phNo = phNo;
+	}
+
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 	
 	

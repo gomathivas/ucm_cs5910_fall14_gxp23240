@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -40,6 +41,9 @@ public class Product {
 	
 	 @Column(name="file_name")
 	 private String filename;
+	 
+	 @OneToOne(mappedBy = "product")
+	 private ShoppingCart shoppingCart;
 
 	public Integer getProductId() {
 		return productId;
@@ -95,6 +99,14 @@ public class Product {
 
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
 	}
 	
 	

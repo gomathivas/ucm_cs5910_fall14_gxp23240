@@ -88,7 +88,7 @@
 
 				<input type="button" onclick="location.href='/EcommSC/checkOut'"
 					value="Confirm Check Out"/>
-				<input type="button" onclick="location.href='/EcommSC/checkOut'"
+				<input type="button" onclick="location.href='/EcommSC/saveCart'"
 					value="Save Cart"/>
 			</c:if>
 

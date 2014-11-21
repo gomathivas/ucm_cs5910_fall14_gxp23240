@@ -29,32 +29,32 @@ public class AppUserDAOImpl implements AppUserDAO {
 	public void addAppUser(AppUser p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(p);
-		logger.info("Person saved successfully, AppUser Details="+p);
+		logger.info("Customer saved successfully, AppUser Details="+p);
 	}
 
 	@Override
 	public void updateAppUser(AppUser p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(p);
-		logger.info("Person updated successfully, AppUser Details="+p);
+		logger.info("Customer updated successfully, AppUser Details="+p);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<AppUser> listAppUser() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<AppUser> personsList = session.createQuery("from Person").list();
-		for(AppUser p : personsList){
-			logger.info("Person List::"+p);
+		List<AppUser> appUserList = session.createQuery("from AppUser").list();
+		for(AppUser p : appUserList){
+			logger.info("Customer List::"+p);
 		}
-		return personsList;
+		return appUserList;
 	}
 
 	@Override
 	public AppUser getAppUserById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
 		AppUser p = (AppUser) session.load(AppUser.class, new Integer(id));
-		logger.info("Person loaded successfully, Person details="+p);
+		logger.info("Customer loaded successfully, Customer details="+p);
 		return p;
 	}
 
@@ -65,7 +65,7 @@ public class AppUserDAOImpl implements AppUserDAO {
 		if(null != p){
 			session.delete(p);
 		}
-		logger.info("Person deleted successfully, person details="+p);
+		logger.info("Customer deleted successfully, person details="+p);
 	}
 
 	@Override

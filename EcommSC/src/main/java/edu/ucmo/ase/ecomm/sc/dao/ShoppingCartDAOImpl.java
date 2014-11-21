@@ -2,6 +2,7 @@ package edu.ucmo.ase.ecomm.sc.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +39,9 @@ public class ShoppingCartDAOImpl implements ShoppingCartDAO{
 
 	@Override
 	public void addShoppingCart(ShoppingCart cart) {
-		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		session.persist(cart);
+		logger.info("ShoppingCart saved successfully, ShoppingCart Details="+ cart);
 		
 	}
 
