@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import edu.ucmo.ase.ecomm.sc.domain.AppUser;
+import edu.ucmo.ase.ecomm.sc.domain.Person;
 import edu.ucmo.ase.ecomm.sc.domain.Product;
 import edu.ucmo.ase.ecomm.sc.domain.ShoppingCart;
 
@@ -24,6 +25,16 @@ public class ShoppingCartDAOImpl implements ShoppingCartDAO{
 	}
 
 	
+
+	@Override
+	public ShoppingCart findShoppingCartByID(Integer shoppingCartId) {
+		Session session = this.sessionFactory.getCurrentSession();		
+		ShoppingCart sc = (ShoppingCart) session.load(ShoppingCart.class, new Integer(shoppingCartId));
+		logger.info("ShoppingCart loaded successfully, ShoppingCart details="+sc);
+		return sc;
+	}
+
+
 
 	@Override
 	public List<ShoppingCart> findAllShoppingCartForAppUser(Integer appUserId) {
@@ -47,7 +58,9 @@ public class ShoppingCartDAOImpl implements ShoppingCartDAO{
 
 	@Override
 	public void updateShoppingCart(ShoppingCart cart) {
-		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(cart);
+		logger.info("ShoppingCart updated successfully, ShoppingCart Details="+ cart);
 		
 	}
 

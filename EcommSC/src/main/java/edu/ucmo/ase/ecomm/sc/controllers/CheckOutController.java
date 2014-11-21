@@ -79,6 +79,14 @@ public class CheckOutController {
 	public String doPaymentConfirmation(Model model,
 			@Validated PaymentModel paymentModel, BindingResult result) {
 
+		if (result.hasErrors()) {
+			return PAYMENT_AND_SHIPPING;
+		}
+		
+		this.paymentService.addPayment(paymentModel, sessionModel);
+		
+		this.scService.deActivateSC(this.sessionModel.getShoppingCartListModel());
+		
 		return PAYMENT_CONFIRMATION_SUCCESS;
 	}
 

@@ -23,4 +23,6 @@ public interface ShoppingCartService {
 	
 	public void saveShoppingCart(ShoppingCartListModel scl, HeaderModel hm);
 
+	public void deActivateSC(ShoppingCartListModel shoppingCartListModel);
+
 }

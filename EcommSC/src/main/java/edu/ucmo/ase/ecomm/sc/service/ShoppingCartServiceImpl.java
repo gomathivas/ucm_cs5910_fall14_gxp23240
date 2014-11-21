@@ -29,6 +29,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	private AppUserDAO appUserDAO;
 	private ProductDAO productDAO;
 
+	
+	
 	@Override
 	@Transactional
 	public ShoppingCartModel getShoppingCartByProductId(Integer id,
@@ -44,6 +46,24 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 		return scm;
 	}
+	
+	
+
+	@Override
+	@Transactional
+	public void deActivateSC(ShoppingCartListModel shoppingCartListModel) {
+		// TODO Auto-generated method stub
+		List<ShoppingCartModel> scmList = shoppingCartListModel.getScmList();
+		for (ShoppingCartModel scm : scmList) {
+			if(scm.getShoppingCartId() != null)	{
+				ShoppingCart sc = this.shoppingCartDAO.findShoppingCartByID(scm.getShoppingCartId());
+				sc.setActive(false);
+				this.shoppingCartDAO.updateShoppingCart(sc);
+			}
+		}
+	}
+
+
 
 	public ShoppingCartDAO getShoppingCartDAO() {
 		return shoppingCartDAO;

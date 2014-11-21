@@ -12,6 +12,8 @@ public interface ShoppingCartDAO {
 	
 	public List<ShoppingCart> findAllShoppinCartForAppUser(AppUser appUser);
 	
+	public ShoppingCart findShoppingCartByID(Integer id);
+	
 	public void addShoppingCart(ShoppingCart cart);
 	
 	public void updateShoppingCart(ShoppingCart cart);

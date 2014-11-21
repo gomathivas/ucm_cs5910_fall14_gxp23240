@@ -66,6 +66,9 @@ public class AppUser {
 	
 	@OneToMany(mappedBy = "appUser")
 	private Set<ShoppingCart> shoppingCarts = new HashSet<ShoppingCart>();
+	
+	@OneToMany(mappedBy = "appUser")
+	private Set<Order> orders = new HashSet<Order>();
 
 	public String getPassword() {
 		return password;
@@ -161,6 +164,14 @@ public class AppUser {
 
 	public void setShoppingCarts(Set<ShoppingCart> shoppingCarts) {
 		this.shoppingCarts = shoppingCarts;
+	}
+
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 
 	@Override

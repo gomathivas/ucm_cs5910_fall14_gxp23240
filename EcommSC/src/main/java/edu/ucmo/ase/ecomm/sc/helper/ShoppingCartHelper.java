@@ -15,37 +15,40 @@ public class ShoppingCartHelper {
 	public static ShoppingCart mapShoppingCartModelToShoppingCart(
 			ShoppingCartModel scm, AppUser appUser, Product product) {
 		ShoppingCart sc = new ShoppingCart();
-		
+
 		sc.setActive(true);
 		sc.setAppUser(appUser);
 		sc.setProduct(product);
 		sc.setProductPrice(product.getProductPrice());
 		sc.setQuantity(scm.getQuantity());
-				
+
 		return sc;
 	}
 
-	public static ShoppingCartListModel mapAllShoppingCartToModel(Set<ShoppingCart> scs, ShoppingCartListModel sclm)	{
-		
+	public static ShoppingCartListModel mapAllShoppingCartToModel(
+			Set<ShoppingCart> scs, ShoppingCartListModel sclm) {
+
 		List<ShoppingCartModel> scmList = new ArrayList<ShoppingCartModel>();
 		ShoppingCartModel scm = null;
-		
+
 		for (ShoppingCart sc : scs) {
-			scm = mapShoppingCartToScm(sc);	
-			scmList.add(scm);
+			if (sc.isActive()) {
+				scm = mapShoppingCartToScm(sc);
+				scmList.add(scm);
+			}
 		}
-		
+
 		sclm.setScmList(scmList);
 		return sclm;
 	}
 
 	public static ShoppingCartModel mapShoppingCartToScm(ShoppingCart sc) {
 		ShoppingCartModel scm = new ShoppingCartModel();
-		
+
 		scm.setProduct(ProductHelper.mapProductToProductModel(sc.getProduct()));
 		scm.setQuantity(sc.getQuantity());
 		scm.setShoppingCartId(sc.getShoppingCartId());
-		
+
 		return scm;
 	}
 }
